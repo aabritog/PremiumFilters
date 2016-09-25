@@ -113,9 +113,37 @@
                         <option>Seleccione...</option>
                     </select>
 
-                </div>                
+                </div>  
+
+                <div class="form-group">
+                <label id="lblCilindraje" style="color: #fff;" for="select4">Cilindraje:</label>
+                    <select class="form-control" id="select4">
+                        <option>Seleccione...</option>
+                    </select>
+
+                </div>               
 
                 </form>
+
+                <div class="panel panel-default">
+                      <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#primerCollapse" aria-expanded="true" aria-controls="primerCollapse">Filtros Aire</a>
+                        </div>
+                      <div id="primerCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+    
+         
+                            <table id="tblAir" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th># REF</th>
+                                    <th>A&ntilde;o</th>
+                                </tr>
+                            </thead>
+                            </table> 
+                         </div>
+                        </div>
+                </div>
                      <!-- <div class="row">
                             <div class="col-md-12">
                                 <ul class="mainmenu">
@@ -162,6 +190,9 @@ $(document).ready(function () {
     var webMethodGetTipoAplicacion = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetTipoAplicacion";
     var webMethodGetMarcaVehiculo="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetMarcaVehiculo";
     var webMethodGetModelo="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetModelo";
+    var webMethodGetCilindraje="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetCilindraje";
+    var webMethodGetAir="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFAire";
+
 
           //var parameters= "{'sCountry':'Polonia'}";
           
@@ -212,7 +243,54 @@ $(document).ready(function () {
                     alert(textStatus + ": " + XMLHttpRequest.responseText);
                 }
         });
-    });    
+    }); 
+
+    $("#select3").change(function(){
+        var idTipoAplicacion= document.getElementById("select1").value
+        var idModelo = document.getElementById("select3").value;
+        //console.log(idMarcaVehiculo);
+        var parametrosGetCilindraje = "{'Id_RefMk':'" + idModelo + "','Id_TMk':'"+ idTipoAplicacion +"'}";
+        $.ajax({
+                type: "POST",
+                url: webMethodGetCilindraje,
+                data: parametrosGetCilindraje,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: llenarCilindraje,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus + ": " + XMLHttpRequest.responseText);
+                }
+        });
+    }); 
+
+    $("#select4").change(function(){
+        var idModelo= document.getElementById("select3").value
+        var idCilindraje = document.getElementById("select4").value;
+        var motCap;
+
+        console.log(idCilindraje);
+
+        if (idCilindraje != '0'){
+            motCap="";
+        }
+        else{
+            motCap= $("#select4").text();
+        }
+        var parametrosGetAir = "{'Id_RefMk':'" + idModelo + "','McilL':'" + idCilindraje + "','MotCap':'"+ motCap +"'}";
+        //console.log(idMarcaVehiculo);
+         
+        $.ajax({
+                type: "POST",
+                url: webMethodGetAir,
+                data: parametrosGetAir,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: llenarAir,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus + ": " + XMLHttpRequest.responseText);
+                }
+        });
+    });   
 });
 
 function llenarTipoAplicacion(result) {
@@ -251,6 +329,44 @@ function llenarModelo(result) {
         
     });
     $("#select3").html(HtmlModelo);
+}
+
+function llenarCilindraje(result) {
+    //console.log(result.d);
+    var objJsonCilindraje = JSON.parse(result.d);
+    var HtmlCilindraje;
+    HtmlCilindraje = "<option value='#'>Seleccione...</option>";
+    $.each(objJsonCilindraje, function (i, item) {
+        //console.log(item.Id_TMk); 
+        if (document.getElementById("select1").value==1 || document.getElementById("select1").value==4){
+        HtmlCilindraje += "<option value='" + item.McilL + "'>" + item.Mcc + "</option>";
+        //console.log('cilindraje: '+ item.McilL);
+        $("#lblCilindraje").html('Cilindraje:');
+    }
+    else{
+        HtmlCilindraje += "<option value='0'>" + item.MotCap + "</option>";
+        $("#lblCilindraje").html('Motor/Capacidad:');
+    }
+
+        
+    });
+    $("#select4").html(HtmlCilindraje);
+
+}
+
+function llenarAir(result) {
+    //console.log(result.d);
+    var objJsonAir = JSON.parse(result.d);
+    var HtmlAir;
+    
+    $.each(objJsonAir, function (i, item) {
+        //console.log(objJsonAir); 
+        HtmlAir="<tr><td>"+item.AIRE+"</td><td>"+item.Maño+"</td></tr>"
+        $("#tblAir").append(HtmlAir);
+        
+    });
+    
+
 }
     
 </script>
