@@ -107,6 +107,13 @@
                     </select>
 
                 </div>
+                <div class="form-group">
+                <label style="color: #fff;" for="select3">Modelo:</label>
+                    <select class="form-control" id="select3">
+                        <option>Seleccione...</option>
+                    </select>
+
+                </div>                
 
                 </form>
                      <!-- <div class="row">
@@ -152,8 +159,9 @@
 
 $(document).ready(function () {
 
-    var webMethodTipoAplicacion = "http://a21287345-001-site1.etempurl.com/WCFTest.asmx/GetTipoAplicacion";
-    var webMethodMarcaVehiculo="http://a21287345-001-site1.etempurl.com/WCFTest.asmx/GetMarcaVehiculo";
+    var webMethodGetTipoAplicacion = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetTipoAplicacion";
+    var webMethodGetMarcaVehiculo="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetMarcaVehiculo";
+    var webMethodGetModelo="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetModelo";
 
           //var parameters= "{'sCountry':'Polonia'}";
           
@@ -162,7 +170,7 @@ $(document).ready(function () {
         //LLAMADO A JSON AJAX LIBRERIA DE JQUERY
         $.ajax({
                 type: "POST",
-                url: webMethodTipoAplicacion,
+                url: webMethodGetTipoAplicacion,
                 //data: parameters,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -174,12 +182,12 @@ $(document).ready(function () {
 
     $("#select1").change(function(){
         var idTipoAplicacion = document.getElementById("select1").value;
-        console.log(idTipoAplicacion);
-        var parametrosMarcaVehiculo="{'Id_TMk':'"+idTipoAplicacion+"'}";
+        //console.log(idTipoAplicacion);
+        var parametrosGetMarcaVehiculo="{'Id_TMk':'"+idTipoAplicacion+"'}";
         $.ajax({
                 type: "POST",
-                url: webMethodMarcaVehiculo,
-                data: parametrosMarcaVehiculo,
+                url: webMethodGetMarcaVehiculo,
+                data: parametrosGetMarcaVehiculo,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: llenarMarcaVehiculo,
@@ -188,6 +196,23 @@ $(document).ready(function () {
                 }
         });
     });
+
+    $("#select2").change(function(){
+        var idMarcaVehiculo = document.getElementById("select2").value;
+        //console.log(idMarcaVehiculo);
+        var parametrosGetModelo = "{'Id_Mk':'"+ idMarcaVehiculo +"'}";
+        $.ajax({
+                type: "POST",
+                url: webMethodGetModelo,
+                data: parametrosGetModelo,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: llenarModelo,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus + ": " + XMLHttpRequest.responseText);
+                }
+        });
+    });    
 });
 
 function llenarTipoAplicacion(result) {
@@ -197,13 +222,13 @@ function llenarTipoAplicacion(result) {
 
     $.each(objJson, function (i, item) {
         //console.log(item.Id_TMk); 
-        HtmltipoAplicacion = "<option value='" + item.Id_TMk + "'>" + item.TAplicacionEng + "</option>";
+        HtmltipoAplicacion = "<option value='" + item.Id_TMk + "'>" + item.TAplicacion + "</option>";
         $("#select1").append(HtmltipoAplicacion);
     });
 }
 
 function llenarMarcaVehiculo(result) {
-    console.log(result.d);
+    //console.log(result.d);
     var objJsonMarcaVehiculo = JSON.parse(result.d);
     var HtmlMarcaVehiculo;
     HtmlMarcaVehiculo = "<option value='#'>Seleccione...</option>";
@@ -213,6 +238,19 @@ function llenarMarcaVehiculo(result) {
         
     });
     $("#select2").html(HtmlMarcaVehiculo);
+}
+
+function llenarModelo(result) {
+    //console.log(result.d);
+    var objJsonModelo = JSON.parse(result.d);
+    var HtmlModelo;
+    HtmlModelo = "<option value='#'>Seleccione...</option>";
+    $.each(objJsonModelo, function (i, item) {
+        //console.log(item.Id_TMk); 
+        HtmlModelo += "<option value='" + item.Id_RefMk + "'>" + item.Ref_Marca + "</option>";
+        
+    });
+    $("#select3").html(HtmlModelo);
 }
     
 </script>
