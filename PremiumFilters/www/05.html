@@ -144,6 +144,7 @@
                          </div>
                         </div>
                 </div>
+                
                      <!-- <div class="row">
                             <div class="col-md-12">
                                 <ul class="mainmenu">
@@ -156,6 +157,57 @@
                 </div>         
             </div><!--section-->
 
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <!--<h4 class="modal-title"></h4>-->
+                        </div>
+                        <div class="modal-body">
+                  
+                       <table class="table">
+                           <tr>
+                                <td colspan="2" id="ref"></td>
+                           </tr>
+                            <tr>
+                                <td colspan="2" id="image"><img style="width: 100%; max-width: 100%;" id="imgFiltro" src=""></td>
+                            </tr>
+                           <tr>
+                                <td>Linea: </td>
+                                <td id="linea"></td>
+                           </tr>
+                           <tr>
+                                <td>Tipo Filtro: </td>
+                                <td id="tFiltro"></td>
+                           </tr>
+                           <tr>
+                                <td>Tipo: </td>
+                                <td id="tipo"></td>
+                           </tr>
+                           <tr>
+                                <td>Alto: </td>
+                                <td id="alto"></td>
+                           </tr>
+                           <tr>
+                                <td>Largo:/D.E: </td>
+                                <td id="largo"></td>
+                           </tr>
+                           <tr>
+                                <td>Rosca: </td>
+                                <td id="rosca"></td>
+                           </tr>
+                       </table>
+                <!--<p align="right"><img src="img/logo_seco_curaduria.png" width="150px" /></p>-->
+                
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
             <div class="footer">
                 <div class="container-fluid">
                     <div class="row">
@@ -192,6 +244,7 @@ $(document).ready(function () {
     var webMethodGetModelo="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetModelo";
     var webMethodGetCilindraje="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetCilindraje";
     var webMethodGetAir="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFAire";
+    
 
 
           //var parameters= "{'sCountry':'Polonia'}";
@@ -267,8 +320,8 @@ $(document).ready(function () {
         var idModelo= document.getElementById("select3").value
         var idCilindraje = document.getElementById("select4").value;
         var motCap;
-
-        console.log(idCilindraje);
+        
+       
 
         if (idCilindraje != '0'){
             motCap="";
@@ -277,6 +330,8 @@ $(document).ready(function () {
             motCap= $("#select4").text();
         }
         var parametrosGetAir = "{'Id_RefMk':'" + idModelo + "','McilL':'" + idCilindraje + "','MotCap':'"+ motCap +"'}";
+
+        
         //console.log(idMarcaVehiculo);
          
         $.ajax({
@@ -290,6 +345,8 @@ $(document).ready(function () {
                     alert(textStatus + ": " + XMLHttpRequest.responseText);
                 }
         });
+
+
     });   
 });
 
@@ -361,12 +418,57 @@ function llenarAir(result) {
     
     $.each(objJsonAir, function (i, item) {
         //console.log(objJsonAir); 
-        HtmlAir="<tr><td>"+item.AIRE+"</td><td>"+item.Maño+"</td></tr>"
+        HtmlAir="<tr><td><a id='"+item.AIRE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIRE+"</a></td><td>"+item.Maño+"</td></tr>"
         $("#tblAir").append(HtmlAir);
         
     });
+}
+
+    function llenarFiltro(id) {
+
+    var webMethodGetFiltro="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFiltro";
+    var parametrosGetFiltro="{'PF_Ref':'"+id+"'}";
+        $.ajax({
+                type: "POST",
+                url: webMethodGetFiltro,
+                data: parametrosGetFiltro,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: detalleFiltro,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus + ": " + XMLHttpRequest.responseText);
+                }
+        });
+    //console.log(result.d);
+    
     
 
+}
+
+function detalleFiltro(result){
+    var objJsonFiltro = JSON.parse(result.d);
+    var HtmlFiltro;
+     var rutaImgFiltro= "http://premiumfilters.com.co/ImagesFilters/";
+
+     
+
+    
+    $.each(objJsonFiltro, function (i, item) {
+        //console.log(objJsonAir); 
+        
+        $("#imgFiltro").attr("src",rutaImgFiltro+item.IMG);
+        $("#ref").html(item.PF_Ref);
+        $("#linea").html(item.RefLinea);
+        $("#tFiltro").html(item.TipoFiltro);
+        $("#tipo").html(item.Tipo);
+        $("#largo").html(item.DLargo);
+        $("#alto").html(item.DAl);
+        $("#rosca").html(item.DAncho);
+
+        
+    });
+
+    $('#myModal').modal('show');
 }
     
 </script>
