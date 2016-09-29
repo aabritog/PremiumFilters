@@ -222,21 +222,23 @@ function llenarCilindraje(result) {
 
 function llenarAir(result) {
     //console.log(result.d);
-        if (IsJsonString(result.d))
-        {
+        if (IsJsonString(result.d)){
 
+        $("#pnlAir").show();
         var objJsonAir = JSON.parse(result.d);
         var HtmlAir;
+
         
         $.each(objJsonAir, function (i, item) {
             //console.log(objJsonAir); 
-            HtmlAir="<tr><td><a id='"+item.AIRE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIRE+"</a></td><td>"+item.Maño+"</td></tr>"
-            $("#tblAir").append(HtmlAir);
+            HtmlAir+="<tr><td><a id='"+item.AIRE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIRE+"</a></td><td>"+item.Maño+"</td></tr>"
+            
             
         });
+        $("#tbodyAir").html(HtmlAir);
     }
     else{
-        alert(result.d);
+        $("#pnlAir").hide();
     }
 }
 
@@ -288,47 +290,64 @@ function detalleFiltro(result){
 }
 
 function llenarOil(result) {
-    //console.log(result.d);
-    var objJsonOil = JSON.parse(result.d);
-    var HtmlOil;
-    
-    $.each(objJsonOil, function (i, item) {
-        //console.log(objJsonAir); 
-        HtmlOil="<tr><td><a id='"+item.ACEITE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.ACEITE+"</a></td><td>"+item.Maño+"</td></tr>"
-        $("#tblAceite").append(HtmlOil);
+    console.log(result.d);
+    if(IsJsonString(result.d)){
+        $("#pnlOil").show();
+        var objJsonOil = JSON.parse(result.d);
+        var HtmlOil;
         
-    });
+        $.each(objJsonOil, function (i, item) {
+            //console.log(objJsonAir); 
+            HtmlOil+="<tr><td><a id='"+item.ACEITE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.ACEITE+"</a></td><td>"+item.Maño+"</td></tr>"
+            
+            
+        });
+        $("#tbodyOil").html(HtmlOil);
+    }
+    else{
+        $("#pnlOil").hide();
+    }
 }
 
 function llenarFuel(result) {
     //console.log(result.d);
-    var objJsonFuel = JSON.parse(result.d);
-    var HtmlFuel;
-    
-    $.each(objJsonFuel, function (i, item) {
-        //console.log(objJsonAir); 
-        HtmlFuel="<tr><td><a id='"+item.COMBUSTIBLE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.COMBUSTIBLE+"</a></td><td>"+item.Maño+"</td></tr>"
-        $("#tblCombustible").append(HtmlFuel);
+    if(IsJsonString(result.d)){
+
+        $("#pnlFuel").show();
+        var objJsonFuel = JSON.parse(result.d);
+        var HtmlFuel;
         
-    });
+        $.each(objJsonFuel, function (i, item) {
+            //console.log(objJsonAir); 
+            HtmlFuel+="<tr><td><a id='"+item.COMBUSTIBLE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.COMBUSTIBLE+"</a></td><td>"+item.Maño+"</td></tr>"
+            
+            
+        });
+        $("#tbodyFuel").html(HtmlFuel);
+    }
+    else{
+        $("#pnlFuel").hide();
+    }
 }
 
 function llenarAC(result) {
     //console.log(result.d);
     if (IsJsonString(result.d)){
-    var objJsonAC = JSON.parse(result.d);
-    var HtmlAC;
-    
-    $.each(objJsonAC, function (i, item) {
-        //console.log(objJsonAir); 
-        HtmlAC="<tr><td><a id='"+item.AIREAC+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIREAC+"</a></td><td>"+item.Maño+"</td></tr>"
-        $("#tblAC").append(HtmlAC);
+        $("#pnlAC").show();
+        var objJsonAC = JSON.parse(result.d);
+        var HtmlAC;
         
-    });
+        $.each(objJsonAC, function (i, item) {
+            //console.log(objJsonAir); 
+            HtmlAC+="<tr><td><a id='"+item.AIREAC+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIREAC+"</a></td><td>"+item.Maño+"</td></tr>"
+            
+            
+        });
+        $("#tbodyAC").html(HtmlAC);
     }
-    else
-    {
-        alert(result.d);
+    else{
+        $("#pnlAC").hide();
+        //alert(result.d);
     }
 }
 

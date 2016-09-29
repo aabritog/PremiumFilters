@@ -127,7 +127,7 @@
                 </form>
 
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
+                    <div style="display: none;" id="pnlAir" class="panel panel-default">
                           <div class="panel-heading">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#primerCollapse" aria-expanded="true" aria-controls="primerCollapse">Filtros Aire</a>
                             </div>
@@ -142,12 +142,13 @@
                                         <th>A&ntilde;o</th>
                                     </tr>
                                 </thead>
+                                <tbody id="tbodyAir"></tbody>
                                 </table> 
                              </div>
                             </div>
                     </div>
 
-                    <div class="panel panel-default">
+                    <div style="display: none;" id="pnlOil" class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingTwo">
                          <h4 class="panel-title">
                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -164,12 +165,13 @@
                                         <th>A&ntilde;o</th>
                                     </tr>
                                 </thead>
+                                <tbody id="tbodyOil"></tbody>
                                 </table> 
                         </div>
                     </div>
                 </div>
 
-                <div class="panel panel-default">
+                <div style="display: none;" id="pnlFuel" class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingThree">
                          <h4 class="panel-title">
                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -186,12 +188,13 @@
                                         <th>A&ntilde;o</th>
                                     </tr>
                                 </thead>
+                                <tbody id="tbodyFuel"></tbody>
                                 </table> 
                         </div>
                     </div>
                 </div>
 
-                <div class="panel panel-default">
+                <div style="display: none;" id="pnlAC" class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingFour">
                          <h4 class="panel-title">
                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -208,6 +211,7 @@
                                         <th>A&ntilde;o</th>
                                     </tr>
                                 </thead>
+                                <tbody id="tbodyAC"></tbody>
                                 </table> 
                         </div>
                     </div>
