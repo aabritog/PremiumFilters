@@ -13,6 +13,7 @@ $(document).ready(function () {
     var webMethodGetOil="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFOil";
     var webMethodGetFuel="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFFuel";
     var webMethodGetAC="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFAirAC";
+    var webMethodGetSr_Referencias ="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetSr_Referencias";
 
 
     //Objeto AJAX que se encarga de obtener la informacíon del combo "Tipo Aplicación".
@@ -158,10 +159,35 @@ $(document).ready(function () {
                     alert(textStatus + ": " + XMLHttpRequest.responseText);
                 }
         });
-
-
     });   
+
+//Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
+    $("#btnBuscar").click(function(){
+
+        var idPF_Ref = document.getElementById("inpBuscar").value
+        var parametrosGetSr_Referencias = "{'PF_Ref':'" + idPF_Ref + "'}";
+
+        console.log(idPF_Ref);
+        console.log(parametrosGetSr_Referencias);
+        console.log(webMethodGetSr_Referencias);
+         
+        //Objeto AJAX para la grilla de los Filtros de Aire.
+        $.ajax({
+                type: "POST",
+                url: webMethodGetSr_Referencias,
+                data: parametrosGetSr_Referencias,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: llenarSr_Referencias,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus + ": " + XMLHttpRequest.responseText);
+                }
+        });
+    }); 
+
 });
+
+
 
 
 //------------------------------------------------------------------------------
@@ -368,5 +394,22 @@ function detalleFiltro(result){
 }
 
 
+//Función que se encarga de llenar la grila de los Filtros de Aire con la información obtenida del objeto AJAX.
+function llenarSr_Referencias(result) {
+    //console.log(result.d);
+        if (IsJsonString(result.d)){
 
-
+        $("#pnlRefPremium").show();
+        var objJsonReferencias = JSON.parse(result.d);
+        var HtmlReferencias;
+//console.log(result.d);
+        $.each(objJsonReferencias, function (i, item) {
+            //console.log(objJsonAir); 
+            HtmlReferencias+="<tr><td><a src='#'>"+item.PF_Ref+"</a></td><td>"+item.Tipo+"</td><td>"+item.Aplicaciones+"</td><td>"+item.Fabricante+"</td><td>"+item.Equivalencias+"</td></tr>"
+        });
+        $("#tbodyRefPremium").html(HtmlReferencias);
+    }
+    else{
+        $("#pnlRefPremium").hide();
+    }
+}
