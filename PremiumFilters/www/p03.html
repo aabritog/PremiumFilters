@@ -118,11 +118,11 @@
                             <div class="panel-heading" role="tab" id="headingFive">
                                  <h4 class="panel-title">
                                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    MODULO REF PREMIUM
+                                    B&uacute;squeda por tipo
                                 </a>
                                 </h4>
                             </div>
-                            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                            <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
                                 <div class="panel-body">
                                     <table id="tblRefPremium" class="table table-striped">
                                         <thead>
@@ -139,8 +139,12 @@
                         </div>                
 
                     </div>
+
+                    <div style="margin:0 auto;width: 100%; text-align: center;color: #fff;"><label id="pages"></label>
+                    <input type="hidden" id="hiddenPage" value="1">
+                    </div>
                     <nav aria-label="Page navigation">
-                      <ul class="pagination">
+                     <!-- <ul class="pagination">
                         <li>
                           <a href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
@@ -156,6 +160,11 @@
                             <span aria-hidden="true">&raquo;</span>
                           </a>
                         </li>
+                      </ul>-->
+
+                      <ul class="pager">
+                        <li id="atrasButton"><a onclick="atrasFunction(document.getElementById('hiddenPage').value)"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        <li id="siguienteButton"><a onclick="siguienteFunction(document.getElementById('hiddenPage').value)"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
                       </ul>
                     </nav>
             </div><!-- end .container-fluid -->

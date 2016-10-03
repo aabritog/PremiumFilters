@@ -1,3 +1,6 @@
+var tipoGlobal;
+var totalPages;
+
 $(document).ready(function () {
 
 (function($) {  
@@ -24,19 +27,45 @@ $(document).ready(function () {
 	 }else{
 	 	tipo=get;
 	 }
-
+   tipoGlobal=tipo;
 	//console.log(tipo);
 
 	var webMethodGetSr_Fichas="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetSr_Fichas";
-	var webMethodGetSr_Referencias="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/"; 
-
+	var webMethodGetNumPages="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetNumberPage"; 
+  var webMethodGetMovePages="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePage";
 	var parametrosSr_Fichas="{'PF_Ref':'','Tipo':'"+ tipo +"'}";
+  var parametrosMovePage="{'PF_Ref':'','Tipo':'"+ tipo +"','Page':'1'}";
 
 
-	$.ajax({
+
+	/*$.ajax({
             type: "POST",
             url: webMethodGetSr_Fichas,
             data: parametrosSr_Fichas,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: llenarSrFichas,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus + ": " + XMLHttpRequest.responseText);
+            }
+    });*/
+
+  $.ajax({
+            type: "POST",
+            url: webMethodGetNumPages,
+            data: parametrosSr_Fichas,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: llenarNumPages,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus + ": " + XMLHttpRequest.responseText);
+            }
+    });
+
+  $.ajax({
+            type: "POST",
+            url: webMethodGetMovePages,
+            data: parametrosMovePage,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarSrFichas,
@@ -68,6 +97,11 @@ $(document).ready(function () {
                    alert(textStatus + ": " + XMLHttpRequest.responseText);
                }
        });
+
+       $("#siguienteButton").addClass("disabled");
+       $("#atrasButton").addClass("disabled");
+       document.getElementById('hiddenPage').value=1;
+       $("#pages").html("Página 1 de 1");
    }); 
 
    $("#btnLimpiar").click(function(){
@@ -76,25 +110,47 @@ $(document).ready(function () {
        document.getElementById("inpBuscar").value="";
        parametrosSr_Fichas = "{'PF_Ref':'','Tipo':'"+ tipo +"'}";
 
+       $("#siguienteButton").removeClass("disabled");
+       $("#atrasButton").removeClass("disabled");
+       document.getElementById('hiddenPage').value=1;
        /*console.log(idPF_Ref);
        console.log(parametrosGetSr_Referencias);
        console.log(webMethodGetSr_Referencias);*/
-        
+      $.ajax({
+            type: "POST",
+            url: webMethodGetNumPages,
+            data: parametrosSr_Fichas,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: llenarNumPages,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus + ": " + XMLHttpRequest.responseText);
+            }
+    }); 
        //Objeto AJAX para la grilla de los Filtros de Aire.
        $.ajax({
-               type: "POST",
-               url: webMethodGetSr_Fichas,
-               data: parametrosSr_Fichas,
-               contentType: "application/json; charset=utf-8",
-               dataType: "json",
-               success: llenarSrFichas,
-               error: function (XMLHttpRequest, textStatus, errorThrown) {
-                   alert(textStatus + ": " + XMLHttpRequest.responseText);
-               }
-       });
+            type: "POST",
+            url: webMethodGetMovePages,
+            data: parametrosMovePage,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: llenarSrFichas,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus + ": " + XMLHttpRequest.responseText);
+            }
+      });
+      
+      
+       
+
    });
 
+
 });
+
+//var numPage=1;
+
+
 
 function IsJsonString(str) {
     try {
@@ -106,8 +162,9 @@ function IsJsonString(str) {
 }
 
 function llenarSrFichas(result){
-
+//console.log(result.d);
 	if (IsJsonString(result.d)){
+    //console.log(result.d);
 		$("#pnlRefPremium").show();
         var objJsonSrFichas = JSON.parse(result.d);
         var HtmlSrFichas;
@@ -168,4 +225,112 @@ function detalleFiltro(result){
         $("#rosca").html(item.DAncho);
     });
     $('#myModal').modal('show');
+}
+
+function llenarNumPages(result){
+//console.log(result.d);
+  if(IsJsonString(result.d)){
+    var objJsonPages = JSON.parse(result.d); 
+    //var totalPages;
+
+    $.each(objJsonPages, function(i,item){
+      totalPages= item.Cantidad;
+    });
+
+    var numPageInicial= document.getElementById('hiddenPage').value;
+
+    if (numPageInicial==1){
+      $("#atrasButton").addClass("disabled");
+    }
+    else{
+      $("#atrasButton").removeClass("disabled");
+    }
+    $("#pages").html("Página " + numPageInicial + " de "+ totalPages);
+
+  }else{
+    //alert("error parse JSON");
+  }
+   
+}
+
+function siguienteFunction(numPage){
+  if(!$("#siguienteButton").hasClass("disabled")){
+
+    if(parseInt(numPage)==parseInt(totalPages)-1){
+      $("#siguienteButton").addClass("disabled");
+    }
+    else{
+      $("#siguienteButton").removeClass("disabled");
+    }
+
+    numPage=parseInt(numPage)+1;
+    document.getElementById('hiddenPage').value=numPage;
+
+    var webMethodGetMovePages="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePage";
+    var parametrosMovePage="{'PF_Ref':'','Tipo':'"+ tipoGlobal +"','Page':'"+numPage+"'}";
+    //console.log(parametrosMovePage);
+    $.ajax({
+            type: "POST",
+            url: webMethodGetMovePages,
+            data: parametrosMovePage,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: llenarSrFichas,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus + ": " + XMLHttpRequest.responseText);
+            }
+    });
+
+    $("#pages").html("Página " + numPage + " de "+ totalPages);
+
+    if (numPage==1){
+        $("#atrasButton").addClass("disabled");
+      }
+      else{
+        $("#atrasButton").removeClass("disabled");
+      }
+  }
+
+}
+
+function atrasFunction(numPage){
+
+  if(!$("#atrasButton").hasClass("disabled")){
+      if(numPage==2){
+        $("#atrasButton").addClass("disabled");
+      }
+      else{
+        $("#atrasButton").removeClass("disabled");
+      }
+
+
+      numPage=parseInt(numPage)-1;
+      document.getElementById('hiddenPage').value=numPage;
+      
+
+      var webMethodGetMovePages="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePage";
+      var parametrosMovePage="{'PF_Ref':'','Tipo':'"+ tipoGlobal +"','Page':'"+numPage+"'}";
+
+      $.ajax({
+              type: "POST",
+              url: webMethodGetMovePages,
+              data: parametrosMovePage,
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: llenarSrFichas,
+              error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  alert(textStatus + ": " + XMLHttpRequest.responseText);
+              }
+      });
+
+      $("#pages").html("Página " + numPage + " de "+ totalPages);
+
+      if(parseInt(numPage)==parseInt(totalPages)){
+        $("#siguienteButton").addClass("disabled");
+      }
+      else{
+        $("#siguienteButton").removeClass("disabled");
+      }
+}
+
 }
