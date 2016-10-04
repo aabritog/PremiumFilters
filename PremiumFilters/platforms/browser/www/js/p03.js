@@ -74,6 +74,8 @@ $(document).ready(function () {
             }
     });
 
+  
+
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
    $("#btnBuscar").click(function(){
 
@@ -175,6 +177,8 @@ function llenarSrFichas(result){
             //console.log(HtmlSrFichas);
         });
         $("#tbodySrFicha").html(HtmlSrFichas);
+        $("#atrasButton").show();
+        $("#siguienteButton").show();
     }
     else{
         $("#pnlRefPremium").hide();
