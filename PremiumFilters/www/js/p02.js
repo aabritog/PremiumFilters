@@ -207,7 +207,7 @@ function IsJsonString(str) {
 
 //Función que se encarga de llenar el combo "Tipo Aplicación" con la información obtenida del objeto AJAX.
 function llenarTipoAplicacion(result) {
-    console.log(result.d);
+    //console.log(result.d);
     var objJson = JSON.parse(result.d);
     var HtmltipoAplicacion;
 
@@ -280,18 +280,29 @@ function llenarAir(result) {
         var objJsonAir = JSON.parse(result.d);
         var HtmlAir;
         var resultFunction;
+
         $.each(objJsonAir, function (i, item) {
             //console.log(objJsonAir); 
+            
+            
+            comprobarExistencia(item.AIRE,function(r){
+                //console.log(r);
             HtmlAir+="<tr><td><a id='"+item.AIRE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIRE+"</a></td><td>"+item.Maño+"</td>"
-            resultFunction= comprobarExistencia(item.AIRE);
-            if (resultFunction){
+                //resultFunction=r;
+                //return resultFunction;
+            if (r){
                 HtmlAir+="<td><ul id='"+item.AIRE+"F' class='pollsSi'><li><a onclick='comprobarFavorito(\""+item.AIRE+"\");'>1</a></li></td></tr>"
             }else{
                 HtmlAir+="<td><ul id='"+item.AIRE+"F' class='pollsNo'><li><a onclick='comprobarFavorito(\""+item.AIRE+"\");'>1</a></li></td></tr>"
             }
+            $("#tbodyAir").html(HtmlAir);
+            });
+            //console.log("resultFunction: "+resultFunction);
+            //console.log("respuestaExistencia: "+respuestaExistencia);
+            
             
         });
-        $("#tbodyAir").html(HtmlAir);
+        //$("#tbodyAir").html(HtmlAir);
     }
     else{
         $("#pnlAir").hide();
@@ -308,11 +319,24 @@ function llenarOil(result) {
         var HtmlOil;
         
         $.each(objJsonOil, function (i, item) {
-            //console.log(objJsonAir); 
+
+            comprobarExistencia(item.ACEITE,function(r){
+                //console.log(r);
             HtmlOil+="<tr><td><a id='"+item.ACEITE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.ACEITE+"</a></td><td>"+item.Maño+"</td>"
-            HtmlOil+="<td><ul class='pollsNo'><li><a>1</a></li></td></tr>"
+                //resultFunction=r;
+                //return resultFunction;
+            if (r){
+                HtmlOil+="<td><ul id='"+item.ACEITE+"F' class='pollsSi'><li><a onclick='comprobarFavorito(\""+item.ACEITE+"\");'>1</a></li></td></tr>"
+            }else{
+                HtmlOil+="<td><ul id='"+item.ACEITE+"F' class='pollsNo'><li><a onclick='comprobarFavorito(\""+item.ACEITE+"\");'>1</a></li></td></tr>"
+            }
+            $("#tbodyOil").html(HtmlOil);
+            });
+            //console.log(objJsonAir); 
+            
+            //HtmlOil+="<td><ul class='pollsNo'><li><a>1</a></li></td></tr>"
         });
-        $("#tbodyOil").html(HtmlOil);
+        //$("#tbodyOil").html(HtmlOil);
     }
     else{
         $("#pnlOil").hide();
@@ -331,10 +355,24 @@ function llenarFuel(result) {
         
         $.each(objJsonFuel, function (i, item) {
             //console.log(objJsonAir); 
+
+            comprobarExistencia(item.COMBUSTIBLE,function(r){
+                //console.log(r);
             HtmlFuel+="<tr><td><a id='"+item.COMBUSTIBLE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.COMBUSTIBLE+"</a></td><td>"+item.Maño+"</td>"
-            HtmlFuel+="<td><ul class='pollsNo'><li><a>1</a></li></td></tr>"
+                //resultFunction=r;
+                //return resultFunction;
+            if (r){
+                HtmlFuel+="<td><ul id='"+item.COMBUSTIBLE+"F' class='pollsSi'><li><a onclick='comprobarFavorito(\""+item.COMBUSTIBLE+"\");'>1</a></li></td></tr>"
+            }else{
+                HtmlFuel+="<td><ul id='"+item.COMBUSTIBLE+"F' class='pollsNo'><li><a onclick='comprobarFavorito(\""+item.COMBUSTIBLE+"\");'>1</a></li></td></tr>"
+            }
+            $("#tbodyFuel").html(HtmlFuel);
+            });
+
+            
+            //HtmlFuel+="<td><ul class='pollsNo'><li><a>1</a></li></td></tr>"
         });
-        $("#tbodyFuel").html(HtmlFuel);
+        //$("#tbodyFuel").html(HtmlFuel);
     }
     else{
         $("#pnlFuel").hide();
@@ -352,10 +390,24 @@ function llenarAC(result) {
         
         $.each(objJsonAC, function (i, item) {
             //console.log(objJsonAir); 
+
+            comprobarExistencia(item.AIREAC,function(r){
+                //console.log(r);
             HtmlAC+="<tr><td><a id='"+item.AIREAC+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIREAC+"</a></td><td>"+item.Maño+"</td>"
-            HtmlAC+="<td><ul class='pollsNo'><li><a>1</a></li></td></tr>"
+                //resultFunction=r;
+                //return resultFunction;
+            if (r){
+                HtmlAC+="<td><ul id='"+item.AIREAC+"F' class='pollsSi'><li><a onclick='comprobarFavorito(\""+item.AIREAC+"\");'>1</a></li></td></tr>"
+            }else{
+                HtmlAC+="<td><ul id='"+item.AIREAC+"F' class='pollsNo'><li><a onclick='comprobarFavorito(\""+item.AIREAC+"\");'>1</a></li></td></tr>"
+            }
+            $("#tbodyAC").html(HtmlAC);
+            });
+
+            
+            //HtmlAC+="<td><ul class='pollsNo'><li><a>1</a></li></td></tr>"
         });
-        $("#tbodyAC").html(HtmlAC);
+        //$("#tbodyAC").html(HtmlAC);
     }
     else{
         $("#pnlAC").hide();

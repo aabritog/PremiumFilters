@@ -16,7 +16,7 @@ function errorCB(err) {
 }
 
 function successCB() {
-    alert("success!");
+    console.log("success!");
 }
 
 function comprobarFavorito(idRef){
@@ -42,20 +42,33 @@ function comprobarFavorito(idRef){
 
 
 }
-
-function comprobarExistencia(idRef){
+//var respuestaExistencia;
+function comprobarExistencia(idRef,termino){
 	var db = window.openDatabase("PFDB", "1.0", "PremiumFilterDB", 200000);
         //db.transaction(crearDB, errorCB, successCB);
         //idRef;
 
-        console.log(idRef);
-        consultaExistencia="SELECT idRef FROM REFERENCIAS WHERE idRef=?";
-        parametros=[idRef];
-        console.log("ce: "+consultaExistencia + "p: "+ parametros);
-        db.transaction(queryExistenciaDB, errorCB);
-        //console.log(resulExistencia);
-        //return resulExistencia;
+        //console.log(idRef);
+        //consultaExistencia="SELECT idRef FROM REFERENCIAS WHERE idRef=?";
+        //parametros=[idRef];
+        //console.log("ce: "+consultaExistencia + "p: "+ parametros);
+        db.transaction(function(tx) {
+			tx.executeSql('SELECT idRef FROM REFERENCIAS WHERE idRef=?',
+			[idRef], function(transaction,result){
+				//console.log(result.rows.length);
+				if(result.rows.length==0){
+					//respuestaExistencia=false;
+					termino(false);
+				}else{
+					//respuestaExistencia=true;
+					termino(true);
+				}
 
+				//termino(respuestaExistencia);
+			}, errorCB);
+		});
+        //termino();//console.log(resulExistencia);
+        //return resulExistencia;
 
 
 
