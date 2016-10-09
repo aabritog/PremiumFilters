@@ -279,10 +279,17 @@ function llenarAir(result) {
         $("#pnlAir").show();
         var objJsonAir = JSON.parse(result.d);
         var HtmlAir;
-
+        var resultFunction;
         $.each(objJsonAir, function (i, item) {
             //console.log(objJsonAir); 
-            HtmlAir+="<tr><td><a id='"+item.AIRE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIRE+"</a></td><td>"+item.Maño+"</td></tr>"
+            HtmlAir+="<tr><td><a id='"+item.AIRE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIRE+"</a></td><td>"+item.Maño+"</td>"
+            resultFunction= comprobarExistencia(item.AIRE);
+            if (resultFunction){
+                HtmlAir+="<td><ul id='"+item.AIRE+"F' class='pollsSi'><li><a onclick='comprobarFavorito(\""+item.AIRE+"\");'>1</a></li></td></tr>"
+            }else{
+                HtmlAir+="<td><ul id='"+item.AIRE+"F' class='pollsNo'><li><a onclick='comprobarFavorito(\""+item.AIRE+"\");'>1</a></li></td></tr>"
+            }
+            
         });
         $("#tbodyAir").html(HtmlAir);
     }
@@ -302,7 +309,8 @@ function llenarOil(result) {
         
         $.each(objJsonOil, function (i, item) {
             //console.log(objJsonAir); 
-            HtmlOil+="<tr><td><a id='"+item.ACEITE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.ACEITE+"</a></td><td>"+item.Maño+"</td></tr>"
+            HtmlOil+="<tr><td><a id='"+item.ACEITE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.ACEITE+"</a></td><td>"+item.Maño+"</td>"
+            HtmlOil+="<td><ul class='pollsNo'><li><a>1</a></li></td></tr>"
         });
         $("#tbodyOil").html(HtmlOil);
     }
@@ -323,7 +331,8 @@ function llenarFuel(result) {
         
         $.each(objJsonFuel, function (i, item) {
             //console.log(objJsonAir); 
-            HtmlFuel+="<tr><td><a id='"+item.COMBUSTIBLE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.COMBUSTIBLE+"</a></td><td>"+item.Maño+"</td></tr>"
+            HtmlFuel+="<tr><td><a id='"+item.COMBUSTIBLE+"' src='#' onclick='llenarFiltro(this.id);'>"+item.COMBUSTIBLE+"</a></td><td>"+item.Maño+"</td>"
+            HtmlFuel+="<td><ul class='pollsNo'><li><a>1</a></li></td></tr>"
         });
         $("#tbodyFuel").html(HtmlFuel);
     }
@@ -343,7 +352,8 @@ function llenarAC(result) {
         
         $.each(objJsonAC, function (i, item) {
             //console.log(objJsonAir); 
-            HtmlAC+="<tr><td><a id='"+item.AIREAC+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIREAC+"</a></td><td>"+item.Maño+"</td></tr>"
+            HtmlAC+="<tr><td><a id='"+item.AIREAC+"' src='#' onclick='llenarFiltro(this.id);'>"+item.AIREAC+"</a></td><td>"+item.Maño+"</td>"
+            HtmlAC+="<td><ul class='pollsNo'><li><a>1</a></li></td></tr>"
         });
         $("#tbodyAC").html(HtmlAC);
     }

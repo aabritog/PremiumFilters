@@ -163,14 +163,35 @@ border: 1px solid #ccc;background: #fff;}
 .modal-window ul li a{display: block;font-size: 19px;color: #fff;background: #213056;padding: 15px 0;transition:all 0.5s;}
 .modal-window ul li a:hover{text-decoration: none;background: #bcc0cc;color: #213056;}
 
-.polls{padding: 0;margin: 10px 0;list-style: none;}
-.polls li{display: inline-block;*display: inline;vertical-align: middle;}
-.polls a{display: block;
+.pollsNo{
+    padding: 0;
+    margin: 10px 0;
+    list-style: none;
+}
+.pollsNo li{
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+}
+.pollsNo a{
+display: block;
 text-indent: -9999px;
 background: url(../img/stars.png) no-repeat;
 padding: 10px 18px;
 background-size: 87px;background-position: -54px 0;}
-.polls a:hover{background-position: 0 0; }
+
+.pollsSi{
+    padding: 0;
+    margin: 10px 0;
+    list-style: none;
+}
+.pollsSi li{display: inline-block;*display: inline;vertical-align: middle;}
+.pollsSi a{display: block;
+text-indent: -9999px;
+background: url(../img/stars.png) no-repeat;
+padding: 10px 18px;
+background-size: 87px;background-position: 0 0;}
+/*.polls a:hover{background-position: 0 0; }*/
 
 .controls{padding: 0;margin: 10px;list-style: none;}
 .controls li{display: inline-block;*display: inline;vertical-align: middle;}
