@@ -44,8 +44,8 @@ function comprobarFavorito(idRef){
 }
 //var respuestaExistencia;
 function comprobarExistencia(idRef,termino){
-	var db = window.openDatabase("PFDB", "1.0", "PremiumFilterDB", 200000);
-        //db.transaction(crearDB, errorCB, successCB);
+	var db = window.openDatabase("PFDB", "1.0", "PremiumFilterDB", 500000);
+        db.transaction(crearDB, errorCB, successCB);
         //idRef;
 
         //console.log(idRef);
