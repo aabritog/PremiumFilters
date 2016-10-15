@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         var idOtraRef = document.getElementById("inpBuscar").value
         var parametrosGetSt_CompetidoresRef = "{'OtraRef':'" + idOtraRef + "'}";
-        
+        console.log('parametrosGetSt_CompetidoresRef:' +parametrosGetSt_CompetidoresRef);
         //Objeto AJAX para la grilla de los Filtros de Aire.
         $.ajax({
                 type: "POST",
@@ -86,17 +86,21 @@ function detalleFiltro(result){
 function llenarSt_CompetidoresRef(result) {
     //console.log(result.d);
         if (IsJsonString(result.d)){
-
+console.log('line 89');           
+console.log(result.d);
         $("#pnlEquivalencias").show();
         var objJsonCompetidoresRef = JSON.parse(result.d);
         var HtmlCompetidoresRef;
 //console.log(result.d);
         $.each(objJsonCompetidoresRef, function (i, item) {
-            HtmlCompetidoresRef+="<tr><td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarFiltro(this.id);'>"+item["PREMIUM Ref"]+"</a></td><td>"+item["Otra Ref"]+"</td><td>"+item.Fabricante+"</td><td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarAplicaciones(this.id);'>"+item.Aplicaciones+"</a></td></tr>"
+            HtmlCompetidoresRef+="<tr><td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarFiltro(this.id);'>"+item["PREMIUM Ref"]+"</a></td><td>"+item["Otra Ref"]+"</td><td>"+item.Fabricante+"</td><td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarAplicaciones(this.id);'>"+item.Aplicaciones+"</a></td></tr>"         
         });
         $("#tbodyEquivalencias").html(HtmlCompetidoresRef);
+console.log(HtmlCompetidoresRef); 
+console.log('line 100'); 
     }
     else{
+        console.log('line 100')           
         $("#pnlEquivalencias").hide();
     }
 }
