@@ -173,14 +173,14 @@ $(document).ready(function () {
          
         //Objeto AJAX para la grilla de los Filtros de Aire.
         $.ajax({
-                type: "POST",
-                url: webMethodGetSr_Referencias,
-                data: parametrosGetSr_Referencias,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: llenarSr_Referencias,
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert(textStatus + ": " + XMLHttpRequest.responseText);
+                    type: "POST",
+                    url: webMethodGetSr_Referencias,
+                    data: parametrosGetSr_Referencias,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: llenarSr_Referencias,
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            alert(textStatus + ": " + XMLHttpRequest.responseText);                           
                 }
         });
     }); 
