@@ -86,21 +86,31 @@ function detalleFiltro(result){
 function llenarSt_CompetidoresRef(result) {
     //console.log(result.d);
         if (IsJsonString(result.d)){
-console.log('line 89');           
-console.log(result.d);
+//console.log('line 89');           
+//console.log(result.d);
         $("#pnlEquivalencias").show();
         var objJsonCompetidoresRef = JSON.parse(result.d);
         var HtmlCompetidoresRef;
 //console.log(result.d);
         $.each(objJsonCompetidoresRef, function (i, item) {
-            HtmlCompetidoresRef+="<tr><td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarFiltro(this.id);'>"+item["PREMIUM Ref"]+"</a></td><td>"+item["Otra Ref"]+"</td><td>"+item.Fabricante+"</td><td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarAplicaciones(this.id);'>"+item.Aplicaciones+"</a></td></tr>"         
+            HtmlCompetidoresRef+="<tr>";
+            HtmlCompetidoresRef+="<td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarFiltro(this.id);'>"+item["PREMIUM Ref"]+"</a></td>";
+            HtmlCompetidoresRef+="<td>"+item["Otra Ref"]+"</td><td>"+item.Fabricante+"</td>";
+            HtmlCompetidoresRef+="<td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarAplicaciones(this.id);'>Ver</a></td>";
+            HtmlCompetidoresRef+="</tr>";         
         });
         $("#tbodyEquivalencias").html(HtmlCompetidoresRef);
-console.log(HtmlCompetidoresRef); 
-console.log('line 100'); 
+//console.log(HtmlCompetidoresRef); 
+//console.log('line 100'); 
     }
     else{
-        console.log('line 100')           
+        //console.log('line 100')
+        navigator.notification.alert(
+        msjSinResultados, // message
+        alertDismissed, // callback
+        'Información', // title
+        'OK' // buttonName
+    );           
         $("#pnlEquivalencias").hide();
     }
 }

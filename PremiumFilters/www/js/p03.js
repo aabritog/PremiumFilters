@@ -96,7 +96,13 @@ $(document).ready(function () {
                dataType: "json",
                success: llenarSrFichas,
                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                   alert(textStatus + ": " + XMLHttpRequest.responseText);
+                  navigator.notification.alert(
+                  textStatus + ": " + XMLHttpRequest.responseText, // message
+                  alertDismissed, // callback
+                  'Error', // title
+                  'OK' // buttonName
+                );
+                   //alert(textStatus + ": " + XMLHttpRequest.responseText);
                }
        });
 
@@ -170,6 +176,7 @@ function llenarSrFichas(result){
 		$("#pnlRefPremium").show();
         var objJsonSrFichas = JSON.parse(result.d);
         var HtmlSrFichas;
+
 //console.log(result.d);
         $.each(objJsonSrFichas, function (i, item) {
             //console.log(item); 
@@ -181,6 +188,12 @@ function llenarSrFichas(result){
         $("#siguienteButton").show();
     }
     else{
+        navigator.notification.alert(
+        msjSinResultados, // message
+        alertDismissed, // callback
+        'Información', // title
+        'OK' // buttonName
+    );
         $("#pnlRefPremium").hide();
     }
 }

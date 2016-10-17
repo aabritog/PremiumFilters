@@ -94,11 +94,23 @@ function llenarSr_Referencias(result) {
         var HtmlReferencias;
 //console.log(result.d);
         $.each(objJsonReferencias, function (i, item) {
-            HtmlReferencias+="<tr><td><a id='"+ item.PF_Ref +"' src='#' onclick='llenarFiltro(this.id);'>"+item.PF_Ref+"</a></td><td>"+item.Tipo+"</td><td><a id='"+ item.PF_Ref +"' src='#' onclick='llenarAplicaciones(this.id);'>"+item.Aplicaciones+"</a></td><td>"+item.Fabricante+"</td><td><a id='"+ item.PF_Ref +"' src='#' onclick='llenarEquivalencias(this.id);'>"+item.Equivalencias+"</a></td></tr>"
+            HtmlReferencias+="<tr>";
+            HtmlReferencias+="<td><a id='"+ item.PF_Ref +"' src='#' onclick='llenarFiltro(this.id);'>"+item.PF_Ref+"</a></td>";
+            HtmlReferencias+="<td>"+item.Tipo+"</td>";
+            HtmlReferencias+="<td><a id='"+ item.PF_Ref +"' src='#' onclick='llenarAplicaciones(this.id);'>Ver</a></td>";
+            HtmlReferencias+="<td>"+item.Fabricante+"</td>";
+            HtmlReferencias+="<td><a id='"+ item.PF_Ref +"' src='#' onclick='llenarEquivalencias(this.id);'>Ver</a></td>";
+            HtmlReferencias+="</tr>"
         });
         $("#tbodyRefPremium").html(HtmlReferencias);
     }
     else{
+        navigator.notification.alert(
+        msjSinResultados, // message
+        alertDismissed, // callback
+        'Información', // title
+        'OK' // buttonName
+    );
         $("#pnlRefPremium").hide();
     }
 }

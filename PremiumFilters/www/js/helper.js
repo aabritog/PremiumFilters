@@ -4,6 +4,8 @@ var consultaExistencia = "";
 var accion = "";
 var parametros = [];
 var ref;
+const msjSinResultados="Búsqueda sin resultados";
+
 
 function crearDB(tx) {
     //tx.executeSql('DROP TABLE IF EXISTS DEMO');

@@ -720,7 +720,10 @@ tbody>tr>td{
     }
 }
 
-@media(max-width:600px) {
+@media(max-width:320px) {
+    body{
+        font-size: xx-small;
+    }
     .ttprincipal {
         font-size: 2em;
     }
@@ -794,3 +797,160 @@ tbody>tr>td{
         max-width: 90%;
     }
 }
+
+@media(min-width:321px) and (max-width:375px) {
+    body{
+        font-size: x-small;
+    }
+    .ttprincipal {
+        font-size: 2em;
+    }
+    #menu-toggle {
+        font-size: 2em;
+    }
+    .mainmenu li a,
+    .mainmenu li a:hover {
+        background-size: 38px;
+        font-size: 1.3em
+    }
+    .mainmenu li:nth-child(1) a {
+        background-position: 98% 13px;
+    }
+    .mainmenu li:nth-child(2) a {
+        background-position: 98% -48px;
+    }
+    .mainmenu li:nth-child(3) a {
+        background-position: 98% -103px;
+    }
+    .mainmenu2 li a,
+    .mainmenu2 li a:hover {
+        background-size: 50px;
+        font-size: 1em
+    }
+    .mainmenu2 li:nth-child(1) a {
+        background-position: 98% 18px;
+    }
+    .mainmenu2 li:nth-child(2) a {
+        background-position: 98% -47px;
+    }
+    .mainmenu2 li:nth-child(3) a {
+        background-position: 98% -107px;
+    }
+    .mainmenu2 li:nth-child(4) a {
+        background-position: 98% -167px;
+    }
+    .boxfont h1 {
+        font-size: 34px;
+    }
+    .boxfont h2 {
+        font-size: 29px;
+    }
+    .boxfont h3 {
+        font-size: 22px;
+    }
+    .boxfont p {
+        font-size: 15px;
+    }
+    .boxfont {
+        /*background: #fff;*/
+        padding: 5% 20px 5% 20px;
+    }
+    .menuinterno ul li a {
+        display: block;
+        background: url(../img/down.svg) no-repeat 99% 6px #213056;
+        font-size: 19px;
+        color: #fff;
+        font-family: 'latoblack';
+        padding: 15px 50px;
+        background-size: 40px;
+        transition: all 0.5s;
+    }
+    .menuinterno ul li a:hover {
+        text-decoration: none;
+        background: url(../img/down.svg) no-repeat 99% -42px #bcc0cc;
+        color: #213056;
+        background-size: 40px;
+    }
+    .modal-window {
+        max-width: 90%;
+    }
+}
+
+@media(min-width:376px) and (max-width:600px) {
+    body{
+        font-size: small;
+    }
+    .ttprincipal {
+        font-size: 2em;
+    }
+    #menu-toggle {
+        font-size: 2em;
+    }
+    .mainmenu li a,
+    .mainmenu li a:hover {
+        background-size: 38px;
+        font-size: 1.3em
+    }
+    .mainmenu li:nth-child(1) a {
+        background-position: 98% 13px;
+    }
+    .mainmenu li:nth-child(2) a {
+        background-position: 98% -48px;
+    }
+    .mainmenu li:nth-child(3) a {
+        background-position: 98% -103px;
+    }
+    .mainmenu2 li a,
+    .mainmenu2 li a:hover {
+        background-size: 50px;
+        font-size: 1em
+    }
+    .mainmenu2 li:nth-child(1) a {
+        background-position: 98% 18px;
+    }
+    .mainmenu2 li:nth-child(2) a {
+        background-position: 98% -47px;
+    }
+    .mainmenu2 li:nth-child(3) a {
+        background-position: 98% -107px;
+    }
+    .mainmenu2 li:nth-child(4) a {
+        background-position: 98% -167px;
+    }
+    .boxfont h1 {
+        font-size: 34px;
+    }
+    .boxfont h2 {
+        font-size: 29px;
+    }
+    .boxfont h3 {
+        font-size: 22px;
+    }
+    .boxfont p {
+        font-size: 15px;
+    }
+    .boxfont {
+        /*background: #fff;*/
+        padding: 5% 20px 5% 20px;
+    }
+    .menuinterno ul li a {
+        display: block;
+        background: url(../img/down.svg) no-repeat 99% 6px #213056;
+        font-size: 19px;
+        color: #fff;
+        font-family: 'latoblack';
+        padding: 15px 50px;
+        background-size: 40px;
+        transition: all 0.5s;
+    }
+    .menuinterno ul li a:hover {
+        text-decoration: none;
+        background: url(../img/down.svg) no-repeat 99% -42px #bcc0cc;
+        color: #213056;
+        background-size: 40px;
+    }
+    .modal-window {
+        max-width: 90%;
+    }
+}
+
