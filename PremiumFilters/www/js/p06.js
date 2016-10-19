@@ -1,33 +1,58 @@
+var totalPages;
 
 //------------------------------------------------------------------------------
 //  BLOQUE DE FUNCIONES JQUERY
 //------------------------------------------------------------------------------
 $(document).ready(function () {
 
-    //Variables que contiene la ruta de los Web  Services a llamar.
-    var webMethodGetGetSr_Allfilters ="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetSr_Allfilters";
 
-//Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
-    $("#btnBuscar").click(function(){
-        console.log('LINE:12');
-        //var idPF_Ref = document.getElementById("inpBuscar").value
-        //var parametrosGetGetSr_Allfilters = "{'PF_Ref':'" + idPF_Ref + "'}";
-        
-        //Objeto AJAX para la grilla de los Filtros de Aire.
-        $.ajax({
-                type: "POST",
-                url: webMethodGetGetSr_Allfilters,
-                //data: parametrosGetGetSr_Allfilters,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: llenarGetSr_Allfilters,
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert(textStatus + ": " + XMLHttpRequest.responseText);
-                }
+    (function($) {  
+        $.get = function(key)   {  
+            key = key.replace(/[\[]/, '\\[');  
+            key = key.replace(/[\]]/, '\\]');  
+            var pattern = "[\\?&]" + key + "=([^&#]*)";  
+            var regex = new RegExp(pattern);  
+            var url = unescape(window.location.href);  
+            var results = regex.exec(url);  
+
+            if (results === null) {  
+                return null;  
+            } else {  
+                return results[1];  
+            }  
+
+        }  
+    })(jQuery); 
+
+
+    var webMethodGetNumberPageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetNumberPageAllfillters"; 
+    var webMethodGetMovePageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
+    var parametrosMovePageAllfillters="{'Page':'1'}";
+
+    $.ajax({
+        type: "POST",
+        url: webMethodGetNumberPageAllfillters,
+        //data: parametrosSr_Fichas,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: llenarNumPagesAllfillters,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert(textStatus + ": " + XMLHttpRequest.responseText);
+        }
+    });
+
+  $.ajax({
+            type: "POST",
+            url: webMethodGetMovePageAllfillters,
+            data: parametrosMovePageAllfillters,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: llenarAllfilters,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus + ": " + XMLHttpRequest.responseText);
+            }
         });
-    }); 
-
-});
+}); 
 
 
 //------------------------------------------------------------------------------
@@ -59,7 +84,6 @@ function llenarFiltro(id) {
                     alert(textStatus + ": " + XMLHttpRequest.responseText);
                 }
         });
-        //console.log(result.d);
 }
 
 
@@ -84,7 +108,6 @@ function detalleFiltro(result){
 }
 
 
-//Función que se encarga de llenar la grila de los Filtros de Aire con la información obtenida del objeto AJAX.
 function llenarGetSr_Allfilters(result) {
         console.log('LINE:89');
         if (IsJsonString(result.d)){
@@ -109,7 +132,6 @@ function llenarGetSr_Allfilters(result) {
 function llenarAplicaciones(id) {
     var webMethodGetEme_Aplicaciones ="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetEme_Aplicaciones";
     var parametrosGetEme_Aplicaciones="{'Pf_Ref':'"+id+"'}";
-    console.log('parametrosGetEme_Aplicaciones'+parametrosGetEme_Aplicaciones);
         $.ajax({
                 type: "POST",
                 url: webMethodGetEme_Aplicaciones,
@@ -167,4 +189,144 @@ function detalleEquivalencias(result){
 
     $("#tbodyEquivalencias").html(HtmldetalleEquivalencias);
     $('#myModalEquivalencias').modal('show');
+}
+
+
+function llenarNumPagesAllfillters(result){
+
+    if(IsJsonString(result.d)){
+        var objJsonPages = JSON.parse(result.d); 
+        $.each(objJsonPages, function(i,item){
+          totalPages= item.Cantidad;
+    });
+
+    var numPageInicial= document.getElementById('hiddenPage').value;
+
+    if (numPageInicial==1){
+        $("#atrasButton").addClass("disabled");
+    }
+    else{
+        $("#atrasButton").removeClass("disabled");
+    }
+    
+    $("#pages").html("Página " + numPageInicial + " de "+ totalPages);
+
+    }else{
+    //alert("error parse JSON");
+    }
+}
+
+
+function llenarAllfilters(result){
+
+    if (IsJsonString(result.d)){
+        $("#pnlTodas").show();
+        var objJsonSrFichas = JSON.parse(result.d);
+        var HtmlAllfilters;
+
+        $.each(objJsonSrFichas, function (i, item) {
+            HtmlAllfilters+="<tr>";
+            HtmlAllfilters+="<td><a id='"+item["PREMIUM Ref"]+"' src='#' onclick='llenarFiltro(this.id)'>"+item["PREMIUM Ref"]+"</a></td>";
+            HtmlAllfilters+="<td>"+item.Tipo+"</td>";
+            HtmlAllfilters+="<td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarAplicaciones(this.id);'>Ver</a></td>";
+            HtmlAllfilters+="<td><a id='"+ item["PREMIUM Ref"] +"' src='#' onclick='llenarEquivalencias(this.id);'>Ver</a></td>";
+            HtmlAllfilters+="</tr>";
+        });
+
+        $("#tbodyTodas").html(HtmlAllfilters);
+        $("#atrasButton").show();
+        $("#siguienteButton").show();
+    }
+    else{
+        navigator.notification.alert(
+        msjSinResultados, // message
+        alertDismissed, // callback
+        'Información', // title
+        'OK' // buttonName
+    );
+        $("#pnlTodas").hide();
+    }
+}
+
+
+function siguienteFunction(numPage){
+
+    if(!$("#siguienteButton").hasClass("disabled")){
+
+        if(parseInt(numPage)==parseInt(totalPages)-1){
+            $("#siguienteButton").addClass("disabled");
+        }
+        else{
+            $("#siguienteButton").removeClass("disabled");
+        }
+
+        numPage=parseInt(numPage)+1;
+        document.getElementById('hiddenPage').value=numPage;
+        var webMethodGetMovePageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
+        var parametrosMovePageAllfillters="{'Page':'"+numPage+"'}";
+
+        $.ajax({
+            type: "POST",
+            url: webMethodGetMovePageAllfillters,
+            data: parametrosMovePageAllfillters,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: llenarAllfilters,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus + ": " + XMLHttpRequest.responseText);
+            }
+        });
+
+        $("#pages").html("Página " + numPage + " de "+ totalPages);
+
+        if (numPage==1){
+            $("#atrasButton").addClass("disabled");
+        }
+        else{
+            $("#atrasButton").removeClass("disabled");
+        }
+    }
+
+}
+
+
+function atrasFunction(numPage){
+
+    if(!$("#atrasButton").hasClass("disabled")){
+
+        if(numPage==2){
+            $("#atrasButton").addClass("disabled");
+        }
+        else{
+            $("#atrasButton").removeClass("disabled");
+        }
+
+        numPage=parseInt(numPage)-1;
+        document.getElementById('hiddenPage').value=numPage;      
+        var webMethodGetMovePageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
+        var parametrosMovePageAllfillters="{'Page':'"+numPage+"'}";
+
+        $.ajax({
+            type: "POST",
+            url: webMethodGetMovePageAllfillters,
+            data: parametrosMovePageAllfillters,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: llenarAllfilters,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus + ": " + XMLHttpRequest.responseText);
+            }
+        });
+
+
+        $("#pages").html("Página " + numPage + " de "+ totalPages);
+
+        if(parseInt(numPage)==parseInt(totalPages)){
+            $("#siguienteButton").addClass("disabled");
+        }
+        else{
+            $("#siguienteButton").removeClass("disabled");
+        }
+    }
+
 }
