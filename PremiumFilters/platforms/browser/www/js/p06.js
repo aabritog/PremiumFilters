@@ -27,12 +27,13 @@ $(document).ready(function () {
 
     var webMethodGetNumberPageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetNumberPageAllfillters"; 
     var webMethodGetMovePageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
-    var parametrosMovePageAllfillters="{'Page':'1'}";
+    var parametrosGetNumberPageAllfillters="{'Tipo':'1'}";
+    var parametrosMovePageAllfillters="{'Page':'1','Tipo':'1'}";
 
     $.ajax({
         type: "POST",
         url: webMethodGetNumberPageAllfillters,
-        //data: parametrosSr_Fichas,
+        data: parametrosGetNumberPageAllfillters,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: llenarNumPagesAllfillters,
@@ -52,6 +53,41 @@ $(document).ready(function () {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
+
+    //Evento jQuery que se encarga de llamar objeto AJAX que obtiene la informacíon del combo "Marca Vehículo".
+    $("#select1").change(function(){
+        var idTipoFiltro = document.getElementById("select1").value;
+        var parametrosGetNumberPageAllfillters="{'Tipo':'"+ idTipoFiltro +"'}";
+        var parametrosMovePageAllfillters="{'Page':'1','Tipo':'"+ idTipoFiltro +"'}";
+        console.log('idTipoFiltro: '+idTipoFiltro);
+        console.log('parametrosGetNumberPageAllfillters: '+parametrosGetNumberPageAllfillters);
+        console.log('parametrosMovePageAllfillters: '+parametrosMovePageAllfillters);
+            $.ajax({
+                type: "POST",
+                url: webMethodGetNumberPageAllfillters,
+                data: parametrosGetNumberPageAllfillters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: llenarNumPagesAllfillters,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus + ": " + XMLHttpRequest.responseText);
+                }
+            });
+
+          $.ajax({
+                    type: "POST",
+                    url: webMethodGetMovePageAllfillters,
+                    data: parametrosMovePageAllfillters,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: llenarAllfilters,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus + ": " + XMLHttpRequest.responseText);
+                    }
+                });
+    });
+
+
 }); 
 
 
@@ -262,8 +298,9 @@ function siguienteFunction(numPage){
 
         numPage=parseInt(numPage)+1;
         document.getElementById('hiddenPage').value=numPage;
+        var idTipoFiltro = document.getElementById("select1").value;        
         var webMethodGetMovePageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
-        var parametrosMovePageAllfillters="{'Page':'"+numPage+"'}";
+        var parametrosMovePageAllfillters="{'Page':'"+numPage+"','Tipo':'"+ idTipoFiltro +"'}";
 
         $.ajax({
             type: "POST",
@@ -303,8 +340,11 @@ function atrasFunction(numPage){
 
         numPage=parseInt(numPage)-1;
         document.getElementById('hiddenPage').value=numPage;      
+        //var webMethodGetMovePageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
+        //var parametrosMovePageAllfillters="{'Page':'"+numPage+"'}";
+        var idTipoFiltro = document.getElementById("select1").value;        
         var webMethodGetMovePageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
-        var parametrosMovePageAllfillters="{'Page':'"+numPage+"'}";
+        var parametrosMovePageAllfillters="{'Page':'"+numPage+"','Tipo':'"+ idTipoFiltro +"'}";
 
         $.ajax({
             type: "POST",
