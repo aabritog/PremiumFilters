@@ -59,9 +59,9 @@ $(document).ready(function () {
         var idTipoFiltro = document.getElementById("select1").value;
         var parametrosGetNumberPageAllfillters="{'Tipo':'"+ idTipoFiltro +"'}";
         var parametrosMovePageAllfillters="{'Page':'1','Tipo':'"+ idTipoFiltro +"'}";
-        console.log('idTipoFiltro: '+idTipoFiltro);
+        /*console.log('idTipoFiltro: '+idTipoFiltro);
         console.log('parametrosGetNumberPageAllfillters: '+parametrosGetNumberPageAllfillters);
-        console.log('parametrosMovePageAllfillters: '+parametrosMovePageAllfillters);
+        console.log('parametrosMovePageAllfillters: '+parametrosMovePageAllfillters);*/
             $.ajax({
                 type: "POST",
                 url: webMethodGetNumberPageAllfillters,

@@ -46,82 +46,73 @@
                 </li>
                 <li><a href="index.html" title="Inicio">Inicio</a></li>
                 <!--<li><a href="#" title="Referencias nuevas">Referencias nuevas</a></li>-->
-                <li><a href="p07.html" title="Favoritos">Favoritos</a></li>
+                <li><a href="#" title="Favoritos">Favoritos</a></li>
                 <li><a href="contacto.html" title="Contáctenos">Contáctenos</a></li>
-                <li><a target="_blank" href="http://premiumfilters.com.co/" title="Visitar el sitio web">Visitar el sitio web</a></li>
+                <li>
+                    <a target="_blank" href="http://premiumfilters.com.co/" title="Visitar el sitio web">Visitar el sitio web</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <header>
+            <div class="return">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-                                <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
-                            </a>
-                        </div>
-                        <div class="col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-4 col-xs-6 col-xs-offset-3">
-                            <a href="#" title="logo aplicacion" id="logo"><img src="img/logo.svg"></a>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!--end header-->
-            <div class="section">
-                <div class="container-fluid">
-                    <div class="form-group">
-                        <form id="frmCatalogo">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Número de referencia" id="inpBuscar">
-                                        <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" id="btnBuscar"><span class="glyphicon glyphicon-search"></span></button>
-                              </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </div>
-                                <!-- /.col-lg-6 -->
-                            </div>
-                        </form>
-                    </div>
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        <div style="display: none;" id="pnlEquivalencias" class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingFive">
-                                <h4 class="panel-title">
-                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                        Equivalencias
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
-                                <div class="panel-body">
-                                    <table id="tblEquivalencias" class="table table-striped">
-                                        <thead class="tituloTabla">
-                                            <tr>
-                                                <th>Referencia</th>
-                                                <th>Otra referencia</th>
-                                                <th>Fabricante</th>
-                                                <th>Aplicaciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tbodyEquivalencias"></tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-3">
+                            <a href="javascript:window.history.back();"><img src="img/left-curse.svg"></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--section-->
+            <!--end return-->
+            <div class="section">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="ttprincipal">Mi Favoritos</h2>
+                            <div class="boxfont">
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div id="pnlAir" class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#primerCollapse" aria-expanded="true" aria-controls="primerCollapse">Favoritos</a>
+                                            </h4>
+                                        </div>
+                                        <div id="primerCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div class="scrollTabla">
+                                                <table id="tblFavorito" class="table table-striped">
+                                                    <thead class="tituloTabla">
+                                                        <tr>
+                                                            <th># REF</th>
+                                                            <th>Eliminar</th>
+                                                            <!--<th></th>-->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbodyFavorito"></tbody>
+                                                </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END .cajaBlanca -->
+                        </div>
+                        <!-- END .col-md-12 -->
+                    </div>
+                    <!-- END .row -->
+                </div>
+                <!-- END .container-fluid -->
+            </div>
+            <!-- END section -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <!--<h4 class="modal-title"></h4>-->
                         </div>
                         <div class="modal-body">
                             <table class="table">
@@ -156,63 +147,7 @@
                                     <td id="rosca"></td>
                                 </tr>
                             </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!--End Modal #MyModal-->
-            <div class="modal fade" id="myModalAplicaciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <table class="table" id="tblAplicaciones">
-                                <thead class="tituloTabla">
-                                    <tr>
-                                        <th>Fabricante</th>
-                                        <th>Modelo</th>
-                                        <th>C.C</th>
-                                        <th colspan="2">Año</th>
-                                        <!--<th>Año Hasta</th>-->
-                                        <th>Motor</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbodyAplicaciones"></tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!--End Modal #MyModal-->
-            <div class="modal fade" id="myModalEquivalencias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <!--<h4 class="modal-title"></h4>-->
-                        </div>
-                        <div class="modal-body">
-                            <table class="table" id="tblEquivalencias">
-                                <thead class="tituloTabla">
-                                    <tr>
-                                        <th>Fabricante</th>
-                                        <th>Equivalencia</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbodyEquivalencias"></tbody>
-                            </table>
+                            <!--<p align="right"><img src="img/logo_seco_curaduria.png" width="150px" /></p>-->
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -244,10 +179,10 @@
     <!-- SCRIPT-->
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="js/boostrap.js"></script>
-    <script type="text/javascript" src="cordova.js" ></script>
-    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/p05.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/p07.js"></script>
 </body>
 
 </html>

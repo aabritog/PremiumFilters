@@ -26,7 +26,7 @@ function comprobarFavorito(idRef) {
     var db = window.openDatabase("PFDB", "1.0", "PremiumFilterDB", 200000);
     db.transaction(crearDB, errorCB, successCB);
     ref = idRef;
-    console.log(idRef);
+    /*console.log(idRef);*/
     consultaValidar = "SELECT idRef FROM REFERENCIAS WHERE idRef=?";
     //db.transaction(queryDB,errorCB);
 
@@ -39,7 +39,7 @@ function comprobarFavorito(idRef) {
             consulta="DELETE FROM REFERENCIAS WHERE idRef=?";   
         }*/
     parametros = [idRef];
-    console.log(consultaValidar + "p: " + parametros);
+    /*console.log(consultaValidar + "p: " + parametros);*/
     db.transaction(queryDB, errorCB);
 
 
@@ -77,6 +77,16 @@ function comprobarExistencia(idRef, termino) {
 
 }
 
+function msjError(){
+                    navigator.notification.alert(
+                    'No tiene favoritos', // message
+                    alertDismissed, // callback
+                    'Información', // title
+                    'OK'
+                     );
+
+}
+
 function guardarFavorito() {
     var db = window.openDatabase("PFDB", "1.0", "PremiumFilterDB", 200000);
     //db.transaction(crearDB, errorCB, successCB);
@@ -85,7 +95,7 @@ function guardarFavorito() {
     consulta = "INSERT INTO REFERENCIAS (idRef) VALUES (?) ";
 
     parametros = [ref];
-    console.log(consulta + "p: " + parametros);
+    /*console.log(consulta + "p: " + parametros);*/
     db.transaction(queryDB, errorCB);
 
 
@@ -109,7 +119,7 @@ function eliminarFavorito() {
     //db.transaction(crearDB, errorCB, successCB);
     consulta = "DELETE FROM REFERENCIAS WHERE idRef=? ";
     parametros = [ref];
-    console.log(consulta + "p: " + parametros);
+    //console.log(consulta + "p: " + parametros);
     db.transaction(queryDB, errorCB);
 
     navigator.notification.alert(
@@ -126,7 +136,7 @@ function eliminarFavorito() {
 /*var db = window.openDatabase("DBTest", "1.0", "PhoneGap Demo", 200000);
 db.transaction(populateDB, errorCB, successCB);*/
 function queryDB(tx) {
-    console.log("cv: " + consultaValidar);
+    /*console.log("cv: " + consultaValidar);*/
     if (consultaValidar == "") {
         tx.executeSql(consulta, parametros, querySuccess, errorCB);
     } else {
@@ -163,11 +173,11 @@ function querySuccess(tx, results) {
     var ulElemento = $('#' + ref + 'F');
     //console.log(ulElemento);
     if (ulElemento.hasClass("pollsNo")) {
-        console.log("pollsNo");
+        //console.log("pollsNo");
         ulElemento.removeClass("pollsNo");
         ulElemento.addClass("pollsSi");
     } else {
-        console.log("pollsSi");
+        //console.log("pollsSi");
         ulElemento.removeClass("pollsSi");
         ulElemento.addClass("pollsNo");
     }

@@ -167,9 +167,9 @@ $(document).ready(function () {
         var idPF_Ref = document.getElementById("inpBuscar").value
         var parametrosGetSr_Referencias = "{'PF_Ref':'" + idPF_Ref + "'}";
 
-        console.log(idPF_Ref);
+        /*console.log(idPF_Ref);
         console.log(parametrosGetSr_Referencias);
-        console.log(webMethodGetSr_Referencias);
+        console.log(webMethodGetSr_Referencias);*/
          
         //Objeto AJAX para la grilla de los Filtros de Aire.
         $.ajax({

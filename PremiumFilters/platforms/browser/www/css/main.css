@@ -1034,3 +1034,9 @@ tbody>tr>td {
 .cajaBlanca h2{font-size: 36px;color: #213056;}
 .cajaBlanca h3{font-size: 30px;color: #213056;}
 .cajaBlanca p{font-size: 24px;color: #000;}
+
+.scrollTabla{
+    overflow:scroll;
+    height: 200px;
+}
+
