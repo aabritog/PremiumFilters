@@ -13,17 +13,17 @@ $(document).ready(function() {
                     htmlTabla += "<td><a id='" + results.rows.item(i).idRef + "' src='#' onclick='eliminar(this.id);'>Eliminar</a></td>";
                     htmlTabla += "</tr>";
 
-                    
 
-                    //console.log("Row = " + i + " ID = " + results.rows.item(i).idRef);
+
+
                 }
                 $("#tbodyFavorito").html(htmlTabla);
 
             } else {
 
-                    msjError(); // buttonName
-               
-                //alert(msjSinResultados);
+                msjError(); // buttonName
+
+
             }
 
         }, errorCB);
@@ -35,31 +35,31 @@ $(document).ready(function() {
 });
 
 function llenarFiltro(id) {
-    var webMethodGetFiltro="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFiltro";
-    var parametrosGetFiltro="{'PF_Ref':'"+id+"'}";
-        $.ajax({
-                type: "POST",
-                url: webMethodGetFiltro,
-                data: parametrosGetFiltro,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: detalleFiltro,
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert(textStatus + ": " + XMLHttpRequest.responseText);
-                }
-        });
+    var webMethodGetFiltro = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFiltro";
+    var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
+    $.ajax({
+        type: "POST",
+        url: webMethodGetFiltro,
+        data: parametrosGetFiltro,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: detalleFiltro,
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(textStatus + ": " + XMLHttpRequest.responseText);
+        }
+    });
 }
 
 
 //Función que se encarga de llenar el modal con los detalles del filtro seleccionado de cualquiera de las grillas.
-function detalleFiltro(result){
+function detalleFiltro(result) {
     var objJsonFiltro = JSON.parse(result.d);
     var HtmlFiltro;
-    var rutaImgFiltro= "http://premiumfilters.com.co/ImagesFilters/";
+    var rutaImgFiltro = "http://premiumfilters.com.co/ImagesFilters/";
 
-    $.each(objJsonFiltro, function (i, item) {
+    $.each(objJsonFiltro, function(i, item) {
         //console.log(objJsonAir); 
-        $("#imgFiltro").attr("src",rutaImgFiltro+item.IMG);
+        $("#imgFiltro").attr("src", rutaImgFiltro + item.IMG);
         $("#ref").html(item.PF_Ref);
         $("#linea").html(item.RefLinea);
         $("#tFiltro").html(item.TipoFiltro);
@@ -71,10 +71,8 @@ function detalleFiltro(result){
     $('#myModal').modal('show');
 }
 
-function eliminar(id){
-	ref = id;
-	eliminarFavorito();
-	location.reload();
+function eliminar(id) {
+    ref = id;
+    eliminarFavorito();
+    location.reload();
 }
-
-
