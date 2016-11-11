@@ -4,15 +4,15 @@
 $(document).ready(function() {
 
     //Variables que contiene la ruta de los Web  Services a llamar.
-    var webMethodGetTipoAplicacion = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetTipoAplicacion";
-    var webMethodGetMarcaVehiculo = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetMarcaVehiculo";
-    var webMethodGetModelo = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetModelo";
-    var webMethodGetCilindraje = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetCilindraje";
-    var webMethodGetAir = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFAire";
-    var webMethodGetOil = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFOil";
-    var webMethodGetFuel = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFFuel";
-    var webMethodGetAC = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFAirAC";
-    var webMethodGetSr_Referencias = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetSr_Referencias";
+    var webMethodGetTipoAplicacion = linkWS("GetTipoAplicacion");
+    var webMethodGetMarcaVehiculo = linkWS("GetMarcaVehiculo");
+    var webMethodGetModelo = linkWS("GetModelo");
+    var webMethodGetCilindraje = linkWS("GetCilindraje");
+    var webMethodGetAir =linkWS("GetFAire");
+    var webMethodGetOil = linkWS("GetFOil");
+    var webMethodGetFuel = linkWS("GetFFuel");
+    var webMethodGetAC = linkWS("GetFAirAC");
+    var webMethodGetSr_Referencias = linkWS("GetSr_Referencias");
 
 
     //Objeto AJAX que se encarga de obtener la informacíon del combo "Tipo Aplicación".
@@ -395,10 +395,10 @@ function llenarAC(result) {
 
     }
 
-
+}
     //Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.
     function llenarFiltro(id) {
-        var webMethodGetFiltro = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFiltro";
+        var webMethodGetFiltro = linkWS("GetFiltro");
         var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
         $.ajax({
             type: "POST",

@@ -30,9 +30,9 @@ $(document).ready(function() {
     tipoGlobal = tipo;
 
 
-    var webMethodGetSr_Fichas = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetSr_Fichas";
-    var webMethodGetNumPages = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetNumberPage";
-    var webMethodGetMovePages = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePage";
+    var webMethodGetSr_Fichas = linkWS("GetSr_Fichas");
+    var webMethodGetNumPages = linkWS("GetNumberPage");
+    var webMethodGetMovePages = linkWS("MovePage");
     var parametrosSr_Fichas = "{'PF_Ref':'','Tipo':'" + tipo + "'}";
     var parametrosMovePage = "{'PF_Ref':'','Tipo':'" + tipo + "','Page':'1'}";
 
@@ -188,7 +188,7 @@ function abrirPDF(ruta) {
 }
 
 function llenarFiltro(id) {
-    var webMethodGetFiltro = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFiltro";
+    var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
         type: "POST",
@@ -262,7 +262,7 @@ function siguienteFunction(numPage) {
         numPage = parseInt(numPage) + 1;
         document.getElementById('hiddenPage').value = numPage;
 
-        var webMethodGetMovePages = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePage";
+        var webMethodGetMovePages = linkWS("MovePage");
         var parametrosMovePage = "{'PF_Ref':'','Tipo':'" + tipoGlobal + "','Page':'" + numPage + "'}";
 
         $.ajax({
@@ -302,7 +302,7 @@ function atrasFunction(numPage) {
         document.getElementById('hiddenPage').value = numPage;
 
 
-        var webMethodGetMovePages = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePage";
+        var webMethodGetMovePages = linkWS("MovePage");
         var parametrosMovePage = "{'PF_Ref':'','Tipo':'" + tipoGlobal + "','Page':'" + numPage + "'}";
 
         $.ajax({

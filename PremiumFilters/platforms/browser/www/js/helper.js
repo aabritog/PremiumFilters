@@ -1,3 +1,4 @@
+var domainWS="http://a212873451-001-site1.atempurl.com/WCFPremiumFilters.asmx/";
 var consulta;
 var consultaValidar = "";
 var consultaExistencia = "";
@@ -6,6 +7,19 @@ var parametros = [];
 var ref;
 const msjSinResultados = "Búsqueda sin resultados";
 
+
+function linkWS(method){
+    var linkWS="";
+
+    try{
+        linkWS=domainWS.toString()+method.toString(); 
+        //console.log(linkWS);
+    }catch(e){
+        console.log(e.toString());
+    }
+
+    return linkWS.toString();
+}
 
 function crearDB(tx) {
     //tx.executeSql('DROP TABLE IF EXISTS DEMO');

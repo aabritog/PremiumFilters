@@ -25,8 +25,8 @@ $(document).ready(function() {
     })(jQuery);
 
 
-    var webMethodGetNumberPageAllfillters = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetNumberPageAllfillters";
-    var webMethodGetMovePageAllfillters = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
+    var webMethodGetNumberPageAllfillters = linkWS("GetNumberPageAllfillters");
+    var webMethodGetMovePageAllfillters = linkWS("MovePageAllfillters");
     var parametrosGetNumberPageAllfillters = "{'Tipo':'1'}";
     var parametrosMovePageAllfillters = "{'Page':'1','Tipo':'1'}";
 
@@ -105,7 +105,7 @@ function IsJsonString(str) {
 
 //Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.
 function llenarFiltro(id) {
-    var webMethodGetFiltro = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFiltro";
+    var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
         type: "POST",
@@ -162,7 +162,7 @@ function llenarGetSr_Allfilters(result) {
 
 //Función que se encarga de llamar objeto AJAX para obtener la información de las aplicaciones segun el número de referencia.
 function llenarAplicaciones(id) {
-    var webMethodGetEme_Aplicaciones = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetEme_Aplicaciones";
+    var webMethodGetEme_Aplicaciones = linkWS("GetEme_Aplicaciones");
     var parametrosGetEme_Aplicaciones = "{'Pf_Ref':'" + id + "'}";
     $.ajax({
         type: "POST",
@@ -194,7 +194,7 @@ function detalleAplicaciones(result) {
 
 //Función que se encarga de llamar objeto AJAX para obtener la información de las equivalencias segun el número de referencia.
 function llenarEquivalencias(id) {
-    var webMethodGetEme_Equivalencias = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetEme_Equivalencias";
+    var webMethodGetEme_Equivalencias = linkWS("GetEme_Equivalencias");
     var parametrosGetEme_Equivalencias = "{'Pf_Ref':'" + id + "'}";
     $.ajax({
         type: "POST",
@@ -292,7 +292,7 @@ function siguienteFunction(numPage) {
         numPage = parseInt(numPage) + 1;
         document.getElementById('hiddenPage').value = numPage;
         var idTipoFiltro = document.getElementById("select1").value;
-        var webMethodGetMovePageAllfillters = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
+        var webMethodGetMovePageAllfillters = linkWS("MovePageAllfillters");
         var parametrosMovePageAllfillters = "{'Page':'" + numPage + "','Tipo':'" + idTipoFiltro + "'}";
 
         $.ajax({
@@ -334,7 +334,7 @@ function atrasFunction(numPage) {
         //var webMethodGetMovePageAllfillters="http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
         //var parametrosMovePageAllfillters="{'Page':'"+numPage+"'}";
         var idTipoFiltro = document.getElementById("select1").value;
-        var webMethodGetMovePageAllfillters = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/MovePageAllfillters";
+        var webMethodGetMovePageAllfillters = linkWS("MovePageAllfillters");
         var parametrosMovePageAllfillters = "{'Page':'" + numPage + "','Tipo':'" + idTipoFiltro + "'}";
 
         $.ajax({

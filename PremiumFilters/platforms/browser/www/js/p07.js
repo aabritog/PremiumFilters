@@ -35,7 +35,7 @@ $(document).ready(function() {
 });
 
 function llenarFiltro(id) {
-    var webMethodGetFiltro = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFiltro";
+    var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
         type: "POST",

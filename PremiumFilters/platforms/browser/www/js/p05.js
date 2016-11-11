@@ -4,7 +4,7 @@
 $(document).ready(function() {
 
     //Variables que contiene la ruta de los Web  Services a llamar.
-    var webMethodGetSt_CompetidoresRef = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetSt_CompetidoresRef";
+    var webMethodGetSt_CompetidoresRef = linkWS("GetSt_CompetidoresRef");
 
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
     $("#btnBuscar").click(function() {
@@ -45,7 +45,7 @@ function IsJsonString(str) {
 
 //Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.
 function llenarFiltro(id) {
-    var webMethodGetFiltro = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetFiltro";
+    var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
         type: "POST",
@@ -114,7 +114,7 @@ function llenarSt_CompetidoresRef(result) {
 
 //Función que se encarga de llamar objeto AJAX para obtener la información de las aplicaciones segun el número de referencia.
 function llenarAplicaciones(id) {
-    var webMethodGetEme_Aplicaciones = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetEme_Aplicaciones";
+    var webMethodGetEme_Aplicaciones = linkWS("GetEme_Aplicaciones");
     var parametrosGetEme_Aplicaciones = "{'Pf_Ref':'" + id + "'}";
     $.ajax({
         type: "POST",
