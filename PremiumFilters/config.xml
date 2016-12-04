@@ -3,6 +3,9 @@
   <description>High Quality Filters</description>
   <author href="http://phonegap.com" email="ing.antonyab@gmail.com">Ing. Antony Aguilera</author>
   <content src="index.html"/>
+  <feature name="NetworkStatus">
+    <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+  </feature>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
   <preference name="target-device" value="universal"/>
@@ -94,6 +97,8 @@
       <icon qualifier="xhdpi" src="res/drawable-xhdpi/icon.png" />
       <icon qualifier="xxhdpi" src="res/drawable-xxhdpi/icon.png" />
       <icon qualifier="xxxhdpi" src="res/drawable-xxxhdpi/icon.png" />
+
+
   </platform>
 
   <platform name="ios">
