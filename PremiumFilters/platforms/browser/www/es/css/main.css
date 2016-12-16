@@ -1137,3 +1137,17 @@ tbody>tr>td {
 .controlBig{
     height: 60px;
 }
+
+.cargando {
+
+    width: 100%;height: 100%;
+    overflow: hidden; 
+    top: 0px;
+    left: 0px;
+    z-index: 10000;
+    text-align: center;
+    position:absolute; 
+    background-color: #FFFFFF;
+    opacity:0.6;
+    filter:alpha(opacity=40);
+}

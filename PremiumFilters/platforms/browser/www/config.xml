@@ -4,10 +4,6 @@
     <description>High Quality Filters</description>
     <author email="ing.antonyab@gmail.com" href="http://phonegap.com">Ing. Antony Aguilera</author>
     <content src="index.html" />
-    <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:plugin name="org.apache.cordova.inappbrowser" />
-    <gap:plugin name="org.apache.cordova.network-information" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
     <splash qualifier="land-hdpi" src="res/drawable-land-hdpi/splash.png" />
     <splash qualifier="land-ldpi" src="res/drawable-land-ldpi/splash.png" />
     <splash qualifier="land-mdpi" src="res/drawable-land-mdpi/splash.png" />
