@@ -23,6 +23,15 @@ $(document).ready(function() {
         );
 
         }else{
+
+            $.mobile.loading( "show", {
+              text: "Cargando...",
+              textVisible: true,
+              theme: "a",
+              html: ""
+            });
+            $("#bloquea").show();
+
             //Objeto AJAX para la grilla de los Filtros de Aire.
             $.ajax({
                 type: "POST",
@@ -107,6 +116,10 @@ function llenarSr_Referencias(result) {
         var HtmlReferencias;
 
         $.each(objJsonReferencias, function(i, item) {
+
+            $.mobile.loading("hide");
+            $("#bloquea").hide();
+
             HtmlReferencias += "<tr>";
             HtmlReferencias += "<td><a id='" + item.PF_Ref + "' src='#' onclick='llenarFiltro(this.id);'>" + item.PF_Ref + "</a></td>";
             HtmlReferencias += "<td>" + item.Tipo + "</td>";
@@ -117,6 +130,10 @@ function llenarSr_Referencias(result) {
         });
         $("#tbodyRefPremium").html(HtmlReferencias);
     } else {
+
+        $.mobile.loading("hide");
+        $("#bloquea").hide();
+        
         navigator.notification.alert(
             msjValidaciones("e",0), // message
             alertDismissed, // callback
