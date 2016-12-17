@@ -460,14 +460,14 @@ function llenarAC(result) {
 
     $.mobile.loading("hide");
     $("#bloquea").hide();
-    if (!resultados) {
+    /*if (!resultados) {
         navigator.notification.alert(
             msjValidaciones("e", 0), // message
             alertDismissed, // callback
             'Información', // title
             'OK' // buttonName
         );
-    }
+    }*/
 
 }
 //Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.

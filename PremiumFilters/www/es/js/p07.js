@@ -1,16 +1,16 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $.mobile.loading("show", {
-            text: "Cargando...",
-            textVisible: true,
-            theme: "a",
-            html: ""
-        });
-        $("#bloquea").show();
+        text: "Cargando...",
+        textVisible: true,
+        theme: "a",
+        html: ""
+    });
+    $("#bloquea").show();
     var htmlTabla;
     var db = window.openDatabase("PFDB", "1.0", "PremiumFilterDB", 500000);
     db.transaction(crearDB, errorCB, successCB);
-    db.transaction(function(tx) {
-        tx.executeSql('SELECT idRef FROM REFERENCIAS', [], function(tx, results) {
+    db.transaction(function (tx) {
+        tx.executeSql('SELECT idRef FROM REFERENCIAS', [], function (tx, results) {
             var len = results.rows.length;
 
             if (len > 0) {
@@ -26,15 +26,24 @@ $(document).ready(function() {
                 }
                 $("#tbodyFavorito").html(htmlTabla);
 
-            } else {
 
-                msjError(); // buttonName
+            } else {
+                navigator.notification.alert(
+                    'No tiene favoritos', // message
+                    alertDismissed, // callback
+                    'Información', // title
+                    'OK'
+                );
+                //msjError(); // buttonName
+                $.mobile.loading("hide");
+                $("#bloquea").hide();
 
 
             }
 
             $.mobile.loading("hide");
             $("#bloquea").hide();
+
 
         }, errorCB);
     });
@@ -46,12 +55,12 @@ $(document).ready(function() {
 
 function llenarFiltro(id) {
     $.mobile.loading("show", {
-            text: "Cargando...",
-            textVisible: true,
-            theme: "a",
-            html: ""
-        });
-        $("#bloquea").show();
+        text: "Cargando...",
+        textVisible: true,
+        theme: "a",
+        html: ""
+    });
+    $("#bloquea").show();
     var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
@@ -61,7 +70,7 @@ function llenarFiltro(id) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: detalleFiltro,
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
     });
@@ -74,7 +83,7 @@ function detalleFiltro(result) {
     var HtmlFiltro;
     var rutaImgFiltro = "http://premiumfilters.com.co/ImagesFilters/";
 
-    $.each(objJsonFiltro, function(i, item) {
+    $.each(objJsonFiltro, function (i, item) {
         //console.log(objJsonAir); 
         $("#imgFiltro").attr("src", rutaImgFiltro + item.IMG);
         $("#ref").html(item.PF_Ref);
@@ -92,12 +101,12 @@ function detalleFiltro(result) {
 
 function eliminar(id) {
     $.mobile.loading("show", {
-            text: "Cargando...",
-            textVisible: true,
-            theme: "a",
-            html: ""
-        });
-        $("#bloquea").show();
+        text: "Cargando...",
+        textVisible: true,
+        theme: "a",
+        html: ""
+    });
+    $("#bloquea").show();
     ref = id;
     eliminarFavorito();
     location.reload();
