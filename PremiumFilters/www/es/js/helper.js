@@ -131,6 +131,9 @@ function eliminarFavorito() {
         'OK' // buttonName
     );
 
+    $.mobile.loading("hide");
+    $("#bloquea").hide();
+
 }
 
 function queryDB(tx) {

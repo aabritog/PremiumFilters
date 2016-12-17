@@ -1,4 +1,11 @@
 $(document).ready(function() {
+    $.mobile.loading("show", {
+            text: "Cargando...",
+            textVisible: true,
+            theme: "a",
+            html: ""
+        });
+        $("#bloquea").show();
     var htmlTabla;
     var db = window.openDatabase("PFDB", "1.0", "PremiumFilterDB", 500000);
     db.transaction(crearDB, errorCB, successCB);
@@ -26,6 +33,9 @@ $(document).ready(function() {
 
             }
 
+            $.mobile.loading("hide");
+            $("#bloquea").hide();
+
         }, errorCB);
     });
 
@@ -35,6 +45,13 @@ $(document).ready(function() {
 });
 
 function llenarFiltro(id) {
+    $.mobile.loading("show", {
+            text: "Cargando...",
+            textVisible: true,
+            theme: "a",
+            html: ""
+        });
+        $("#bloquea").show();
     var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
@@ -69,9 +86,18 @@ function detalleFiltro(result) {
         $("#rosca").html(item.DAncho);
     });
     $('#myModal').modal('show');
+    $.mobile.loading("hide");
+    $("#bloquea").hide();
 }
 
 function eliminar(id) {
+    $.mobile.loading("show", {
+            text: "Cargando...",
+            textVisible: true,
+            theme: "a",
+            html: ""
+        });
+        $("#bloquea").show();
     ref = id;
     eliminarFavorito();
     location.reload();

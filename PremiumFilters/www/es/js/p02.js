@@ -1,14 +1,22 @@
 //------------------------------------------------------------------------------
 //  BLOQUE DE FUNCIONES JQUERY
 //------------------------------------------------------------------------------
-$(document).ready(function() {
+var resultados = false;
+$(document).ready(function () {
 
+    $.mobile.loading("show", {
+        text: "Cargando...",
+        textVisible: true,
+        theme: "a",
+        html: ""
+    });
+    $("#bloquea").show();
     //Variables que contiene la ruta de los Web  Services a llamar.
     var webMethodGetTipoAplicacion = linkWS("GetTipoAplicacion");
     var webMethodGetMarcaVehiculo = linkWS("GetMarcaVehiculo");
     var webMethodGetModelo = linkWS("GetModelo");
     var webMethodGetCilindraje = linkWS("GetCilindraje");
-    var webMethodGetAir =linkWS("GetFAire");
+    var webMethodGetAir = linkWS("GetFAire");
     var webMethodGetOil = linkWS("GetFOil");
     var webMethodGetFuel = linkWS("GetFFuel");
     var webMethodGetAC = linkWS("GetFAirAC");
@@ -23,14 +31,23 @@ $(document).ready(function() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: llenarTipoAplicacion,
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
     });
 
 
+
+
     //Evento jQuery que se encarga de llamar objeto AJAX que obtiene la informacíon del combo "Marca Vehículo".
-    $("#select1").change(function() {
+    $("#select1").change(function () {
+        $.mobile.loading("show", {
+            text: "Cargando...",
+            textVisible: true,
+            theme: "a",
+            html: ""
+        });
+        $("#bloquea").show();
         var idTipoAplicacion = document.getElementById("select1").value;
         var parametrosGetMarcaVehiculo = "{'Id_TMk':'" + idTipoAplicacion + "'}";
         $.ajax({
@@ -40,15 +57,22 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarMarcaVehiculo,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
+
     });
 
 
     //Evento jQuery que se encarga de llamar objeto AJAX que obtiene la informacíon del combo "Modelo".
-    $("#select2").change(function() {
+    $("#select2").change(function () {
+        $.mobile.loading("show", {
+            text: "Cargando...",
+            textVisible: true,
+            theme: "a",
+            html: ""
+        });
         var idMarcaVehiculo = document.getElementById("select2").value;
 
         var parametrosGetModelo = "{'Id_Mk':'" + idMarcaVehiculo + "'}";
@@ -59,15 +83,23 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarModelo,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
+
+
     });
 
 
     //Evento jQuery que se encarga de llamar objeto AJAX que obtiene la informacíon del combo "Cilindraje - Motor/Capacidad".
-    $("#select3").change(function() {
+    $("#select3").change(function () {
+        $.mobile.loading("show", {
+            text: "Cargando...",
+            textVisible: true,
+            theme: "a",
+            html: ""
+        });
         var idTipoAplicacion = document.getElementById("select1").value
         var idModelo = document.getElementById("select3").value;
 
@@ -79,15 +111,24 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarCilindraje,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
+
+
     });
 
 
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
-    $("#select4").change(function() {
+    $("#select4").change(function () {
+
+        $.mobile.loading("show", {
+            text: "Cargando...",
+            textVisible: true,
+            theme: "a",
+            html: ""
+        });
 
         var idModelo = document.getElementById("select3").value
         var idCilindraje = document.getElementById("select4").value;
@@ -114,7 +155,7 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarAir,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
@@ -127,7 +168,7 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarOil,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
@@ -140,7 +181,7 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarFuel,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
@@ -153,15 +194,23 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarAC,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
+
+
     });
 
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
-    $("#btnBuscar").click(function() {
+    $("#btnBuscar").click(function () {
 
+        $.mobile.loading("show", {
+            text: "Cargando...",
+            textVisible: true,
+            theme: "a",
+            html: ""
+        });
         var idPF_Ref = document.getElementById("inpBuscar").value
         var parametrosGetSr_Referencias = "{'PF_Ref':'" + idPF_Ref + "'}";
 
@@ -173,10 +222,12 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarSr_Referencias,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
+
+
     });
 
 });
@@ -205,11 +256,14 @@ function llenarTipoAplicacion(result) {
     var objJson = JSON.parse(result.d);
     var HtmltipoAplicacion;
 
-    $.each(objJson, function(i, item) {
+    $.each(objJson, function (i, item) {
 
         HtmltipoAplicacion = "<option value='" + item.Id_TMk + "'>" + item.TAplicacion + "</option>";
         $("#select1").append(HtmltipoAplicacion);
     });
+
+    $.mobile.loading("hide");
+    $("#bloquea").hide();
 }
 
 
@@ -219,11 +273,13 @@ function llenarMarcaVehiculo(result) {
     var objJsonMarcaVehiculo = JSON.parse(result.d);
     var HtmlMarcaVehiculo;
     HtmlMarcaVehiculo = "<option value='#'>Seleccione...</option>";
-    $.each(objJsonMarcaVehiculo, function(i, item) {
+    $.each(objJsonMarcaVehiculo, function (i, item) {
 
         HtmlMarcaVehiculo += "<option value='" + item.Id_Mk + "'>" + item.Marca + "</option>";
     });
     $("#select2").html(HtmlMarcaVehiculo);
+    $.mobile.loading("hide");
+    $("#bloquea").hide();
 }
 
 
@@ -233,11 +289,14 @@ function llenarModelo(result) {
     var objJsonModelo = JSON.parse(result.d);
     var HtmlModelo;
     HtmlModelo = "<option value='#'>Seleccione...</option>";
-    $.each(objJsonModelo, function(i, item) {
+    $.each(objJsonModelo, function (i, item) {
 
         HtmlModelo += "<option value='" + item.Id_RefMk + "'>" + item.Ref_Marca + "</option>";
     });
     $("#select3").html(HtmlModelo);
+
+    $.mobile.loading("hide");
+    $("#bloquea").hide();
 }
 
 
@@ -247,7 +306,7 @@ function llenarCilindraje(result) {
     var objJsonCilindraje = JSON.parse(result.d);
     var HtmlCilindraje;
     HtmlCilindraje = "<option value='#'>Seleccione...</option>";
-    $.each(objJsonCilindraje, function(i, item) {
+    $.each(objJsonCilindraje, function (i, item) {
 
         if (document.getElementById("select1").value == 1 || document.getElementById("select1").value == 4) {
             HtmlCilindraje += "<option value='" + item.McilL + "'>" + item.Mcc + "</option>";
@@ -261,6 +320,9 @@ function llenarCilindraje(result) {
     });
 
     $("#select4").html(HtmlCilindraje);
+
+    $.mobile.loading("hide");
+    $("#bloquea").hide();
 }
 
 
@@ -274,10 +336,10 @@ function llenarAir(result) {
         var HtmlAir;
         var resultFunction;
 
-        $.each(objJsonAir, function(i, item) {
+        $.each(objJsonAir, function (i, item) {
 
 
-            comprobarExistencia(item.AIRE, function(r) {
+            comprobarExistencia(item.AIRE, function (r) {
 
                 HtmlAir += "<tr><td><a id='" + item.AIRE + "' src='#' onclick='llenarFiltro(this.id);'>" + item.AIRE + "</a></td><td>" + item.Maño + "</td>"
 
@@ -289,7 +351,7 @@ function llenarAir(result) {
                 $("#tbodyAir").html(HtmlAir);
             });
 
-
+            resultados = true;
 
         });
 
@@ -307,13 +369,13 @@ function llenarOil(result) {
         var objJsonOil = JSON.parse(result.d);
         var HtmlOil;
 
-        $.each(objJsonOil, function(i, item) {
+        $.each(objJsonOil, function (i, item) {
 
-            comprobarExistencia(item.ACEITE, function(r) {
+            comprobarExistencia(item.ACEITE, function (r) {
 
                 HtmlOil += "<tr><td><a id='" + item.ACEITE + "' src='#' onclick='llenarFiltro(this.id);'>" + item.ACEITE + "</a></td><td>" + item.Maño + "</td>"
-                    //resultFunction=r;
-                    //return resultFunction;
+                //resultFunction=r;
+                //return resultFunction;
                 if (r) {
                     HtmlOil += "<td><ul id='" + item.ACEITE + "F' class='pollsSi'><li><a onclick='comprobarFavorito(\"" + item.ACEITE + "\");'>1</a></li></td></tr>"
                 } else {
@@ -322,6 +384,7 @@ function llenarOil(result) {
                 $("#tbodyOil").html(HtmlOil);
             });
 
+            resultados = true;
         });
 
     } else {
@@ -339,10 +402,10 @@ function llenarFuel(result) {
         var objJsonFuel = JSON.parse(result.d);
         var HtmlFuel;
 
-        $.each(objJsonFuel, function(i, item) {
+        $.each(objJsonFuel, function (i, item) {
 
 
-            comprobarExistencia(item.COMBUSTIBLE, function(r) {
+            comprobarExistencia(item.COMBUSTIBLE, function (r) {
 
                 HtmlFuel += "<tr><td><a id='" + item.COMBUSTIBLE + "' src='#' onclick='llenarFiltro(this.id);'>" + item.COMBUSTIBLE + "</a></td><td>" + item.Maño + "</td>"
 
@@ -354,7 +417,7 @@ function llenarFuel(result) {
                 $("#tbodyFuel").html(HtmlFuel);
             });
 
-
+            resultados = true;
 
         });
 
@@ -372,10 +435,10 @@ function llenarAC(result) {
         var objJsonAC = JSON.parse(result.d);
         var HtmlAC;
 
-        $.each(objJsonAC, function(i, item) {
+        $.each(objJsonAC, function (i, item) {
 
 
-            comprobarExistencia(item.AIREAC, function(r) {
+            comprobarExistencia(item.AIREAC, function (r) {
 
                 HtmlAC += "<tr><td><a id='" + item.AIREAC + "' src='#' onclick='llenarFiltro(this.id);'>" + item.AIREAC + "</a></td><td>" + item.Maño + "</td>"
 
@@ -386,7 +449,7 @@ function llenarAC(result) {
                 }
                 $("#tbodyAC").html(HtmlAC);
             });
-
+            resultados = true;
 
         });
 
@@ -395,62 +458,84 @@ function llenarAC(result) {
 
     }
 
+    $.mobile.loading("hide");
+    $("#bloquea").hide();
+    if (!resultados) {
+        navigator.notification.alert(
+            msjValidaciones("e", 0), // message
+            alertDismissed, // callback
+            'Información', // title
+            'OK' // buttonName
+        );
+    }
+
 }
-    //Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.
-    function llenarFiltro(id) {
-        var webMethodGetFiltro = linkWS("GetFiltro");
-        var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
-        $.ajax({
-            type: "POST",
-            url: webMethodGetFiltro,
-            data: parametrosGetFiltro,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: detalleFiltro,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert(textStatus + ": " + XMLHttpRequest.responseText);
-            }
-        });
-
-    }
-
-
-    //Función que se encarga de llenar el modal con los detalles del filtro seleccionado de cualquiera de las grillas.
-    function detalleFiltro(result) {
-        var objJsonFiltro = JSON.parse(result.d);
-        var HtmlFiltro;
-        var rutaImgFiltro = "http://premiumfilters.com.co/ImagesFilters/";
-
-        $.each(objJsonFiltro, function(i, item) {
-
-            $("#imgFiltro").attr("src", rutaImgFiltro + item.IMG);
-            $("#ref").html(item.PF_Ref);
-            $("#linea").html(item.RefLinea);
-            $("#tFiltro").html(item.TipoFiltro);
-            $("#tipo").html(item.Tipo);
-            $("#largo").html(item.DLargo);
-            $("#alto").html(item.DAl);
-            $("#rosca").html(item.DAncho);
-        });
-        $('#myModal').modal('show');
-    }
-
-
-    //Función que se encarga de llenar la grila de los Filtros de Aire con la información obtenida del objeto AJAX.
-    function llenarSr_Referencias(result) {
-
-        if (IsJsonString(result.d)) {
-
-            $("#pnlRefPremium").show();
-            var objJsonReferencias = JSON.parse(result.d);
-            var HtmlReferencias;
-
-            $.each(objJsonReferencias, function(i, item) {
-
-                HtmlReferencias += "<tr><td><a src='#'>" + item.PF_Ref + "</a></td><td>" + item.Tipo + "</td><td>" + item.Aplicaciones + "</td><td>" + item.Fabricante + "</td><td>" + item.Equivalencias + "</td></tr>"
-            });
-            $("#tbodyRefPremium").html(HtmlReferencias);
-        } else {
-            $("#pnlRefPremium").hide();
+//Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.
+function llenarFiltro(id) {
+    $.mobile.loading("show", {
+        text: "Cargando...",
+        textVisible: true,
+        theme: "a",
+        html: ""
+    });
+    var webMethodGetFiltro = linkWS("GetFiltro");
+    var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
+    $.ajax({
+        type: "POST",
+        url: webMethodGetFiltro,
+        data: parametrosGetFiltro,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: detalleFiltro,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
+    });
+
+}
+
+
+//Función que se encarga de llenar el modal con los detalles del filtro seleccionado de cualquiera de las grillas.
+function detalleFiltro(result) {
+    var objJsonFiltro = JSON.parse(result.d);
+    var HtmlFiltro;
+    var rutaImgFiltro = "http://premiumfilters.com.co/ImagesFilters/";
+
+    $.each(objJsonFiltro, function (i, item) {
+
+        $("#imgFiltro").attr("src", rutaImgFiltro + item.IMG);
+        $("#ref").html(item.PF_Ref);
+        $("#linea").html(item.RefLinea);
+        $("#tFiltro").html(item.TipoFiltro);
+        $("#tipo").html(item.Tipo);
+        $("#largo").html(item.DLargo);
+        $("#alto").html(item.DAl);
+        $("#rosca").html(item.DAncho);
+    });
+    $('#myModal').modal('show');
+    $.mobile.loading("hide");
+    $("#bloquea").hide();
+}
+
+
+//Función que se encarga de llenar la grila de los Filtros de Aire con la información obtenida del objeto AJAX.
+function llenarSr_Referencias(result) {
+
+    if (IsJsonString(result.d)) {
+
+        $("#pnlRefPremium").show();
+        var objJsonReferencias = JSON.parse(result.d);
+        var HtmlReferencias;
+
+        $.each(objJsonReferencias, function (i, item) {
+
+            HtmlReferencias += "<tr><td><a src='#'>" + item.PF_Ref + "</a></td><td>" + item.Tipo + "</td><td>" + item.Aplicaciones + "</td><td>" + item.Fabricante + "</td><td>" + item.Equivalencias + "</td></tr>"
+        });
+        $("#tbodyRefPremium").html(HtmlReferencias);
+    } else {
+        $("#pnlRefPremium").hide();
     }
+
+    $.mobile.loading("hide");
+    $("#bloquea").hide();
+}
