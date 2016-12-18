@@ -8,13 +8,8 @@ $(document).ready(function () {
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
     $("#btnBuscar").click(function () {
 
-        $.mobile.loading("show", {
-            text: "Cargando...",
-            textVisible: true,
-            theme: "a",
-            html: ""
-        });
         $("#bloquea").show();
+        $("#fondoBlanco").show();
         //Variables que contiene la ruta de los Web  Services a llamar.
         var webMethodGetSt_CompetidoresRef = linkWS("GetSt_CompetidoresRef");
 
@@ -64,13 +59,8 @@ function IsJsonString(str) {
 
 //Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.
 function llenarFiltro(id) {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
     var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
@@ -104,8 +94,8 @@ function detalleFiltro(result) {
         $("#rosca").html(item.DAncho);
     });
     $('#myModal').modal('show');
-    $.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -138,20 +128,15 @@ function llenarSt_CompetidoresRef(result) {
         $("#pnlEquivalencias").hide();
     }
 
-    $.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
 //Función que se encarga de llamar objeto AJAX para obtener la información de las aplicaciones segun el número de referencia.
 function llenarAplicaciones(id) {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
     var webMethodGetEme_Aplicaciones = linkWS("GetEme_Aplicaciones");
     var parametrosGetEme_Aplicaciones = "{'Pf_Ref':'" + id + "'}";
     $.ajax({
@@ -179,6 +164,6 @@ function detalleAplicaciones(result) {
 
     $("#tbodyAplicaciones").html(HtmldetalleAplicaciones);
     $('#myModalAplicaciones').modal('show');
-    $.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }

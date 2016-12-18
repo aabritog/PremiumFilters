@@ -2,12 +2,8 @@ var tipoGlobal;
 var totalPages;
 
 $(document).ready(function() {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
+    $("#bloquea").show();
+    $("#fondoBlanco").show();
 
     (function($) {
         $.get = function(key) {
@@ -71,12 +67,15 @@ $(document).ready(function() {
 
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
     $("#btnBuscar").click(function() {
-        $.mobile.loading("show", {
+        /*$.mobile.loading("show", {
         text: "Cargando...",
         textVisible: true,
         theme: "a",
         html: ""
-    });
+    });*/
+
+        $("#bloquea").show();
+        $("#fondoBlanco").show();
 
         var idPF_Ref = document.getElementById("inpBuscar").value
         parametrosSr_Fichas = "{'PF_Ref':'" + idPF_Ref + "','Tipo':'" + tipo + "'}";
@@ -117,12 +116,8 @@ $(document).ready(function() {
     });
 
     $("#btnLimpiar").click(function() {
-        $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
+        $("#bloquea").show();
+        $("#fondoBlanco").show();
         //var ref = window.open('https://docs.google.com/viewer?url=http://premiumfilters.com.co/PDFFilters/ACP-004.pdf&embedded=true', '_blank', 'location=yes');
         document.getElementById("inpBuscar").value = "";
         parametrosSr_Fichas = "{'PF_Ref':'','Tipo':'" + tipo + "'}";
@@ -203,8 +198,9 @@ function llenarSrFichas(result) {
         $("#pnlRefPremium").hide();
     }
 
-    $.mobile.loading("hide");
+    //$.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -216,12 +212,8 @@ function abrirPDF(ruta) {
 }
 
 function llenarFiltro(id) {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
+    $("#bloquea").show();
+    $("#fondoBlanco").show();
     var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
@@ -257,8 +249,8 @@ function detalleFiltro(result) {
         $("#rosca").html(item.DAncho);
     });
     $('#myModal').modal('show');
-    $.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 function llenarNumPages(result) {
@@ -288,7 +280,8 @@ function llenarNumPages(result) {
 
 function siguienteFunction(numPage) {
     if (!$("#siguienteButton").hasClass("disabled")) {
-
+        $("#bloquea").show();
+        $("#fondoBlanco").show();
         if (parseInt(numPage) == parseInt(totalPages) - 1) {
             $("#siguienteButton").addClass("disabled");
         } else {
@@ -325,7 +318,8 @@ function siguienteFunction(numPage) {
 }
 
 function atrasFunction(numPage) {
-
+    $("#bloquea").show();
+    $("#fondoBlanco").show();
     if (!$("#atrasButton").hasClass("disabled")) {
         if (numPage == 2) {
             $("#atrasButton").addClass("disabled");

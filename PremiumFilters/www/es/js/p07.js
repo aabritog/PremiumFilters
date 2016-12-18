@@ -1,11 +1,6 @@
 $(document).ready(function () {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
     var htmlTabla;
     var db = window.openDatabase("PFDB", "1.0", "PremiumFilterDB", 500000);
     db.transaction(crearDB, errorCB, successCB);
@@ -35,14 +30,14 @@ $(document).ready(function () {
                     'OK'
                 );
                 //msjError(); // buttonName
-                $.mobile.loading("hide");
                 $("#bloquea").hide();
+                $("#fondoBlanco").hide();
 
 
             }
 
-            $.mobile.loading("hide");
             $("#bloquea").hide();
+            $("#fondoBlanco").hide();
 
 
         }, errorCB);
@@ -54,13 +49,8 @@ $(document).ready(function () {
 });
 
 function llenarFiltro(id) {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
     var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
@@ -95,18 +85,13 @@ function detalleFiltro(result) {
         $("#rosca").html(item.DAncho);
     });
     $('#myModal').modal('show');
-    $.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 function eliminar(id) {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
     ref = id;
     eliminarFavorito();
     location.reload();

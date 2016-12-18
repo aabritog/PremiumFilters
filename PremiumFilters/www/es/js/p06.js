@@ -25,13 +25,8 @@ $(document).ready(function() {
     })(jQuery);
 
 
-    $.mobile.loading( "show", {
-      text: "Cargando...",
-      textVisible: true,
-      theme: "a",
-      html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
 
     var webMethodGetNumberPageAllfillters = linkWS("GetNumberPageAllfillters");
     var webMethodGetMovePageAllfillters = linkWS("MovePageAllfillters");
@@ -68,13 +63,8 @@ $(document).ready(function() {
         var parametrosGetNumberPageAllfillters = "{'Tipo':'" + idTipoFiltro + "'}";
         var parametrosMovePageAllfillters = "{'Page':'1','Tipo':'" + idTipoFiltro + "'}";
 
-        $.mobile.loading( "show", {
-          text: "Cargando...",
-          textVisible: true,
-          theme: "a",
-          html: ""
-        });
         $("#bloquea").show();
+        $("#fondoBlanco").show();
 
         $.ajax({
             type: "POST",
@@ -124,13 +114,8 @@ function llenarFiltro(id) {
     var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
 
-    $.mobile.loading( "show", {
-      text: "Cargando...",
-      textVisible: true,
-      theme: "a",
-      html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
 
     $.ajax({
         type: "POST",
@@ -163,9 +148,10 @@ function detalleFiltro(result) {
         $("#alto").html(item.DAl);
         $("#rosca").html(item.DAncho);
     });
-    $.mobile.loading("hide");
-    $("#bloquea").hide();
+    
     $('#myModal').modal('show');
+    $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -192,13 +178,8 @@ function llenarAplicaciones(id) {
     var webMethodGetEme_Aplicaciones = linkWS("GetEme_Aplicaciones");
     var parametrosGetEme_Aplicaciones = "{'Pf_Ref':'" + id + "'}";
 
-    $.mobile.loading( "show", {
-      text: "Cargando...",
-      textVisible: true,
-      theme: "a",
-      html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
 
     $.ajax({
         type: "POST",
@@ -224,9 +205,9 @@ function detalleAplicaciones(result) {
     });
 
     $("#tbodyAplicaciones").html(HtmldetalleAplicaciones);
-    $.mobile.loading("hide");
-    $("#bloquea").hide();
     $('#myModalAplicaciones').modal('show');
+    $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -235,13 +216,8 @@ function llenarEquivalencias(id) {
     var webMethodGetEme_Equivalencias = linkWS("GetEme_Equivalencias");
     var parametrosGetEme_Equivalencias = "{'Pf_Ref':'" + id + "'}";
 
-    $.mobile.loading( "show", {
-      text: "Cargando...",
-      textVisible: true,
-      theme: "a",
-      html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
 
     $.ajax({
         type: "POST",
@@ -267,9 +243,9 @@ function detalleEquivalencias(result) {
     });
 
     $("#tbodyEquivalencias").html(HtmldetalleEquivalencias);
-    $.mobile.loading("hide");
-    $("#bloquea").hide();
     $('#myModalEquivalencias').modal('show');
+    $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -306,8 +282,7 @@ function llenarAllfilters(result) {
 
         $.each(objJsonSrFichas, function(i, item) {
             
-            $.mobile.loading("hide");
-            $("#bloquea").hide();
+        
             
             HtmlAllfilters += "<tr>";
             HtmlAllfilters += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarFiltro(this.id)'>" + item["PREMIUM Ref"] + "</a></td>";
@@ -328,13 +303,20 @@ function llenarAllfilters(result) {
             'OK' // buttonName
         );
         $("#pnlTodas").hide();
+       
     }
+
+    $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
 function siguienteFunction(numPage) {
 
     if (!$("#siguienteButton").hasClass("disabled")) {
+
+        $("#bloquea").show();
+        $("#fondoBlanco").show();
 
         if (parseInt(numPage) == parseInt(totalPages) - 1) {
             $("#siguienteButton").addClass("disabled");
@@ -348,13 +330,7 @@ function siguienteFunction(numPage) {
         var webMethodGetMovePageAllfillters = linkWS("MovePageAllfillters");
         var parametrosMovePageAllfillters = "{'Page':'" + numPage + "','Tipo':'" + idTipoFiltro + "'}";
 
-        $.mobile.loading( "show", {
-          text: "Cargando...",
-          textVisible: true,
-          theme: "a",
-          html: ""
-        });
-        $("#bloquea").show();
+        
 
         $.ajax({
             type: "POST",
@@ -384,6 +360,9 @@ function atrasFunction(numPage) {
 
     if (!$("#atrasButton").hasClass("disabled")) {
 
+        $("#bloquea").show();
+        $("#fondoBlanco").show();
+
         if (numPage == 2) {
             $("#atrasButton").addClass("disabled");
         } else {
@@ -398,14 +377,6 @@ function atrasFunction(numPage) {
         var webMethodGetMovePageAllfillters = linkWS("MovePageAllfillters");
         var parametrosMovePageAllfillters = "{'Page':'" + numPage + "','Tipo':'" + idTipoFiltro + "'}";
 
-        $.mobile.loading( "show", {
-          text: "Cargando...",
-          textVisible: true,
-          theme: "a",
-          html: ""
-        });
-
-        $("#bloquea").show();
 
         $.ajax({
             type: "POST",

@@ -11,13 +11,8 @@ $(document).ready(function () {
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
     $("#btnBuscar").click(function () {
 
-        $.mobile.loading("show", {
-            text: "Cargando...",
-            textVisible: true,
-            theme: "a",
-            html: ""
-        });
         $("#bloquea").show();
+        $("#fondoBlanco").show();
 
         var idPF_Ref = document.getElementById("inpBuscar").value
         var parametrosGetSr_Referencias = "{'PF_Ref':'" + idPF_Ref + "'}";
@@ -66,13 +61,8 @@ function IsJsonString(str) {
 
 //Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.
 function llenarFiltro(id) {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
     //var webMethodGetFiltro=  linkWS('GetFiltro');
     //console.log(webMethodGetFiltro);
     var webMethodGetFiltro = linkWS("GetFiltro");
@@ -110,8 +100,8 @@ function detalleFiltro(result) {
         $("#rosca").html(item.DAncho);
     });
     $('#myModal').modal('show');
-    $.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -148,21 +138,17 @@ function llenarSr_Referencias(result) {
         $("#pnlRefPremium").hide();
     }
 
-    $.mobile.loading("hide");
+    //$.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
 //Función que se encarga de llamar objeto AJAX para obtener la información de las aplicaciones segun el número de referencia.
 function llenarAplicaciones(id) {
 
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
 
     var webMethodGetEme_Aplicaciones = linkWS("GetEme_Aplicaciones");
     var parametrosGetEme_Aplicaciones = "{'Pf_Ref':'" + id + "'}";
@@ -192,20 +178,15 @@ function detalleAplicaciones(result) {
 
     $("#tbodyAplicaciones").html(HtmldetalleAplicaciones);
     $('#myModalAplicaciones').modal('show');
-    $.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
 //Función que se encarga de llamar objeto AJAX para obtener la información de las equivalencias segun el número de referencia.
 function llenarEquivalencias(id) {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
     $("#bloquea").show();
+    $("#fondoBlanco").show();
     var webMethodGetEme_Equivalencias = linkWS("GetEme_Equivalencias");
     var parametrosGetEme_Equivalencias = "{'Pf_Ref':'" + id + "'}";
 
@@ -234,6 +215,6 @@ function detalleEquivalencias(result) {
 
     $("#tbodyEquivalencias").html(HtmldetalleEquivalencias);
     $('#myModalEquivalencias').modal('show');
-    $.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }

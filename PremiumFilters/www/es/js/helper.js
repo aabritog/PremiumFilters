@@ -131,8 +131,8 @@ function eliminarFavorito() {
         'OK' // buttonName
     );
 
-    $.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 
 }
 
@@ -185,3 +185,8 @@ function queryExistencia(tx, results) {
     }
 
 }
+
+/*function changePage(page) {
+    //$( ":mobile-pagecontainer" ).pagecontainer( "change", page, { changeHash: false } );
+    $.mobile.changePage(page,{ changeHash: false});
+}*/

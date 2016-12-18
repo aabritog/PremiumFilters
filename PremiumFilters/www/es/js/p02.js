@@ -4,13 +4,9 @@
 var resultados = false;
 $(document).ready(function () {
 
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
+    
     $("#bloquea").show();
+    $("#fondoBlanco").show();
     //Variables que contiene la ruta de los Web  Services a llamar.
     var webMethodGetTipoAplicacion = linkWS("GetTipoAplicacion");
     var webMethodGetMarcaVehiculo = linkWS("GetMarcaVehiculo");
@@ -41,13 +37,8 @@ $(document).ready(function () {
 
     //Evento jQuery que se encarga de llamar objeto AJAX que obtiene la informacíon del combo "Marca Vehículo".
     $("#select1").change(function () {
-        $.mobile.loading("show", {
-            text: "Cargando...",
-            textVisible: true,
-            theme: "a",
-            html: ""
-        });
         $("#bloquea").show();
+        $("#fondoBlanco").show();
         var idTipoAplicacion = document.getElementById("select1").value;
         var parametrosGetMarcaVehiculo = "{'Id_TMk':'" + idTipoAplicacion + "'}";
         $.ajax({
@@ -67,12 +58,8 @@ $(document).ready(function () {
 
     //Evento jQuery que se encarga de llamar objeto AJAX que obtiene la informacíon del combo "Modelo".
     $("#select2").change(function () {
-        $.mobile.loading("show", {
-            text: "Cargando...",
-            textVisible: true,
-            theme: "a",
-            html: ""
-        });
+        $("#bloquea").show();
+        $("#fondoBlanco").show();
         var idMarcaVehiculo = document.getElementById("select2").value;
 
         var parametrosGetModelo = "{'Id_Mk':'" + idMarcaVehiculo + "'}";
@@ -94,12 +81,8 @@ $(document).ready(function () {
 
     //Evento jQuery que se encarga de llamar objeto AJAX que obtiene la informacíon del combo "Cilindraje - Motor/Capacidad".
     $("#select3").change(function () {
-        $.mobile.loading("show", {
-            text: "Cargando...",
-            textVisible: true,
-            theme: "a",
-            html: ""
-        });
+        $("#bloquea").show();
+        $("#fondoBlanco").show();
         var idTipoAplicacion = document.getElementById("select1").value
         var idModelo = document.getElementById("select3").value;
 
@@ -122,13 +105,8 @@ $(document).ready(function () {
 
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
     $("#select4").change(function () {
-
-        $.mobile.loading("show", {
-            text: "Cargando...",
-            textVisible: true,
-            theme: "a",
-            html: ""
-        });
+        $("#bloquea").show();
+        $("#fondoBlanco").show();
 
         var idModelo = document.getElementById("select3").value
         var idCilindraje = document.getElementById("select4").value;
@@ -262,8 +240,9 @@ function llenarTipoAplicacion(result) {
         $("#select1").append(HtmltipoAplicacion);
     });
 
-    $.mobile.loading("hide");
+    //$.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -278,8 +257,9 @@ function llenarMarcaVehiculo(result) {
         HtmlMarcaVehiculo += "<option value='" + item.Id_Mk + "'>" + item.Marca + "</option>";
     });
     $("#select2").html(HtmlMarcaVehiculo);
-    $.mobile.loading("hide");
+    //$.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -295,8 +275,9 @@ function llenarModelo(result) {
     });
     $("#select3").html(HtmlModelo);
 
-    $.mobile.loading("hide");
+    //$.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -321,8 +302,9 @@ function llenarCilindraje(result) {
 
     $("#select4").html(HtmlCilindraje);
 
-    $.mobile.loading("hide");
+    //$.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -357,6 +339,7 @@ function llenarAir(result) {
 
     } else {
         $("#pnlAir").hide();
+        
     }
 }
 
@@ -458,8 +441,9 @@ function llenarAC(result) {
 
     }
 
-    $.mobile.loading("hide");
+    //$.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
     /*if (!resultados) {
         navigator.notification.alert(
             msjValidaciones("e", 0), // message
@@ -472,12 +456,8 @@ function llenarAC(result) {
 }
 //Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.
 function llenarFiltro(id) {
-    $.mobile.loading("show", {
-        text: "Cargando...",
-        textVisible: true,
-        theme: "a",
-        html: ""
-    });
+    $("#bloquea").show();
+    $("#fondoBlanco").show();
     var webMethodGetFiltro = linkWS("GetFiltro");
     var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
     $.ajax({
@@ -513,8 +493,9 @@ function detalleFiltro(result) {
         $("#rosca").html(item.DAncho);
     });
     $('#myModal').modal('show');
-    $.mobile.loading("hide");
+    //$.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
 
 
@@ -536,6 +517,7 @@ function llenarSr_Referencias(result) {
         $("#pnlRefPremium").hide();
     }
 
-    $.mobile.loading("hide");
+    //$.mobile.loading("hide");
     $("#bloquea").hide();
+    $("#fondoBlanco").hide();
 }
