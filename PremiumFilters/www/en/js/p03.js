@@ -182,7 +182,7 @@ function llenarSrFichas(result) {
 
         $.each(objJsonSrFichas, function(i, item) {
 
-            HtmlSrFichas += "<tr><td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarFiltro(this.id)'>" + item["PREMIUM Ref"] + "</a></td><td>" + item.Tipo + "</td><td><a src='#' onclick='abrirPDF(\"" + item.FichaLink + "\");'>Ver</a></td></tr>";
+            HtmlSrFichas += "<tr><td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarFiltro(this.id)'>" + item["PREMIUM Ref"] + "</a></td><td>" + item.Tipo + "</td><td><a src='#' onclick='abrirPDF(\"" + item.FichaLink + "\");'>View</a></td></tr>";
 
         });
         $("#tbodySrFicha").html(HtmlSrFichas);
@@ -270,7 +270,7 @@ function llenarNumPages(result) {
         } else {
             $("#atrasButton").removeClass("disabled");
         }
-        $("#pages").html("Página " + numPageInicial + " de " + totalPages);
+        $("#pages").html("Page " + numPageInicial + " of " + totalPages);
 
     } else {
 
@@ -306,7 +306,7 @@ function siguienteFunction(numPage) {
             }
         });
 
-        $("#pages").html("Página " + numPage + " de " + totalPages);
+        $("#pages").html("Page " + numPage + " of " + totalPages);
 
         if (numPage == 1) {
             $("#atrasButton").addClass("disabled");
@@ -347,7 +347,7 @@ function atrasFunction(numPage) {
             }
         });
 
-        $("#pages").html("Página " + numPage + " de " + totalPages);
+        $("#pages").html("Page " + numPage + " of " + totalPages);
 
         if (parseInt(numPage) == parseInt(totalPages)) {
             $("#siguienteButton").addClass("disabled");
