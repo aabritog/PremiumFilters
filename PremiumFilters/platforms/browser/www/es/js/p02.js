@@ -112,18 +112,22 @@ $(document).ready(function () {
         var idCilindraje = document.getElementById("select4").value;
         var motCap;
 
-        if (idCilindraje != '0') {
+        if (document.getElementById("select1").value == 1 || document.getElementById("select1").value == 4) {
+            motCap = '';
+        } else {
+            motCap = document.getElementById("select4").value;
+            idCilindraje = '0';
+        }
+        /*if (idCilindraje != '0') {
             motCap = "";
         } else {
             motCap = $("#select4").text();
-        }
+        }*/
 
         var parametrosGetAir = "{'Id_RefMk':'" + idModelo + "','McilL':'" + idCilindraje + "','MotCap':'" + motCap + "'}";
         var parametrosGetOil = parametrosGetAir;
         var parametrosGetFuel = parametrosGetAir;
         var parametrosGetAC = parametrosGetAir;
-
-
 
         //Objeto AJAX para la grilla de los Filtros de Aire.
         $.ajax({
@@ -240,7 +244,6 @@ function llenarTipoAplicacion(result) {
         $("#select1").append(HtmltipoAplicacion);
     });
 
-    //$.mobile.loading("hide");
     $("#bloquea").hide();
     $("#fondoBlanco").hide();
 }
@@ -257,7 +260,8 @@ function llenarMarcaVehiculo(result) {
         HtmlMarcaVehiculo += "<option value='" + item.Id_Mk + "'>" + item.Marca + "</option>";
     });
     $("#select2").html(HtmlMarcaVehiculo);
-    //$.mobile.loading("hide");
+    $("#select3").html("<option value='#'>Seleccione...</option>");
+    $("#select4").html("<option value='#'>Seleccione...</option>");
     $("#bloquea").hide();
     $("#fondoBlanco").hide();
 }
@@ -274,8 +278,7 @@ function llenarModelo(result) {
         HtmlModelo += "<option value='" + item.Id_RefMk + "'>" + item.Ref_Marca + "</option>";
     });
     $("#select3").html(HtmlModelo);
-
-    //$.mobile.loading("hide");
+    $("#select4").html("<option value='#'>Seleccione...</option>");
     $("#bloquea").hide();
     $("#fondoBlanco").hide();
 }
@@ -294,15 +297,13 @@ function llenarCilindraje(result) {
 
             $("#lblCilindraje").html('Cilindraje:');
         } else {
-            HtmlCilindraje += "<option value='0'>" + item.MotCap + "</option>";
+            HtmlCilindraje += "<option value='"+ item.MotCap +"'>" + item.MotCap + "</option>";
             $("#lblCilindraje").html('Motor/Capacidad:');
         }
 
     });
 
     $("#select4").html(HtmlCilindraje);
-
-    //$.mobile.loading("hide");
     $("#bloquea").hide();
     $("#fondoBlanco").hide();
 }
