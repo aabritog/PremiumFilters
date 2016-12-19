@@ -1,0 +1,267 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Catalogo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!--<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
+    <!--Etiquetas Íconos IPHONE IPAD-->
+    <!-- Set Up the App Icon -->
+    <link rel="apple-touch-icon" href="img/apple/icon5757.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple/touch-icon-ipad-retina.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple/apple-touch-icon.png">
+    <!-- Load It Like A Native App -->
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Customize the Startup Screen -->
+    <link rel="apple-touch-startup-image" href="img/apple/320x460.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)">
+    <link rel="apple-touch-startup-image" href="img/apple/640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="img/apple/640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="img/apple/768x1004.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)">
+    <link rel="apple-touch-startup-image" href="img/apple/748x1024.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)">
+    <link rel="apple-touch-startup-image" href="img/apple/1536x2008.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="img/apple/1496x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)">
+    <!--Favicon Website-->
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div id="fondoBlanco" class="cargando" style="display:none;"></div>
+    <div id="bloquea" class="loaderSpin" style="display:none;"></div>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <!--<div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#" id="botm"><img src="img/left-curse.svg"></a>
+                </li>
+                <li><a href="principal.html" title="Inicio">Inicio</a></li>
+                <li><a href="#" title="Referencias nuevas">Referencias nuevas</a></li>
+                <li><a href="p07.html" title="Favoritos">Favoritos</a></li>
+                <li><a href="contacto.html" title="Contáctenos">Contáctenos</a></li>
+                <li><a target="_blank" href="http://premiumfilters.com.co/" title="Visitar el sitio web">Visitar el sitio web</a></li>
+                <li><a href="../index.html" title="Cambiar idioma">Cambiar idioma</a></li>
+            </ul>
+        </div>-->
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="return">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-3">
+                            <a href="javascript:window.history.back();"><img src="img/left-curse.svg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<header>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                                <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-4 col-xs-6 col-xs-offset-3">
+                            <a href="#" title="logo aplicacion" id="logo"><img src="img/logo.svg"></a>
+                        </div>
+                    </div>
+                </div>
+            </header>-->
+            <!--end header-->
+            <div style="padding:8% 0 110% 0" class="section">
+                <div class="container-fluid">
+                    <div class="form-group">
+                        <form id="frmCatalogo">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div style="overflow: hidden; width: 100%; position: relative;" class="">
+                                        <input type="text" class="form-control controlBig" placeholder="Reference number" id="inpBuscar">
+                                        <span style="position: absolute;right: 0;top: 0;" class="">
+                                <button class="btn btn-default controlBig" type="button" id="btnBuscar"><span class="glyphicon glyphicon-search"></span></button>
+                              </span>
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+                                <!-- /.col-lg-6 -->
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div style="display: none;" id="pnlEquivalencias" class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFive">
+                                <h4 class="panel-title">
+                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        Cross Reference
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
+                                <div class="panel-body">
+                                    <table id="tblEquivalencias" class="table table-striped">
+                                        <thead class="tituloTabla">
+                                            <tr>
+                                                <th>REF.</th>
+                                                <th>Cross Reference</th>
+                                                <th>Make</th>
+                                                <th>Applicattion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodyEquivalencias"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--section-->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tr class="tituloTabla">
+                                    <td colspan="2" id="ref"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" id="image"><img style="width: 100%; max-width: 100%;" id="imgFiltro" src=""></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">Type: </td>
+                                    <td id="linea"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">Style: </td>
+                                    <td id="tFiltro"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">Filter Type: </td>
+                                    <td id="tipo"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">NameA: </td>
+                                    <td id="alto"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">NameB: </td>
+                                    <td id="largo"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">NameC (optional): </td>
+                                    <td id="rosca"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!--End Modal #MyModal-->
+            <div class="modal fade" id="myModalAplicaciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table" id="tblAplicaciones">
+                                <thead class="tituloTabla">
+                                    <tr>
+                                        <th>Make</th>
+                                        <th>Model</th>
+                                        <th>C.C</th>
+                                        <th colspan="2">Year</th>
+                                        <!--<th>Año Hasta</th>-->
+                                        <th>Motor</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyAplicaciones"></tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!--End Modal #MyModal-->
+            <div class="modal fade" id="myModalEquivalencias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <!--<h4 class="modal-title"></h4>-->
+                        </div>
+                        <div class="modal-body">
+                            <table class="table" id="tblEquivalencias">
+                                <thead class="tituloTabla">
+                                    <tr>
+                                        <th>Make</th>
+                                        <th>Cross Reference</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyEquivalencias"></tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!--End Modal #MyModal-->
+            <!--<div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul>
+                                <li><a href="#" title="Facebook">Facebook</a></li>
+                                <li><a href="#" title="Twitter">Twitter</a></li>
+                                <li><a href="#" title="Youtube">Youtube</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> end footer-->
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- SCRIPT-->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+    <script src="js/boostrap.js"></script>
+    <script type="text/javascript" src="../cordova.js" ></script>
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/p05.js"></script>
+</body>
+
+</html>

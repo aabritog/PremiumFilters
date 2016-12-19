@@ -12,9 +12,8 @@ $(document).ready(function () {
                 for (var i = 0; i < len; i++) {
                     htmlTabla += "<tr>";
                     htmlTabla += "<td><a id='" + results.rows.item(i).idRef + "' src='#' onclick='llenarFiltro(this.id)'>" + results.rows.item(i).idRef + "</a></td>";
-                    htmlTabla += "<td><a id='" + results.rows.item(i).idRef + "' src='#' onclick='eliminar(this.id);'>Eliminar</a></td>";
+                    htmlTabla += "<td><a id='" + results.rows.item(i).idRef + "' src='#' onclick='eliminar(this.id);'>Delete</a></td>";
                     htmlTabla += "</tr>";
-
 
 
 
@@ -32,6 +31,8 @@ $(document).ready(function () {
                     'OK'
                 );
                 //msjError(); // buttonName
+//                $("#bloquea").hide();
+//                $("#fondoBlanco").hide();
 
 
             }

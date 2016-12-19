@@ -23,6 +23,8 @@ $(document).ready(function () {
 
 
             } else {
+                $("#bloquea").hide();
+                $("#fondoBlanco").hide();
                 navigator.notification.alert(
                     'No tiene favoritos', // message
                     alertDismissed, // callback
@@ -30,8 +32,6 @@ $(document).ready(function () {
                     'OK'
                 );
                 //msjError(); // buttonName
-                $("#bloquea").hide();
-                $("#fondoBlanco").hide();
 
 
             }

@@ -1,0 +1,193 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Catalogo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!--<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
+    <!--Etiquetas Íconos IPHONE IPAD-->
+    <!-- Set Up the App Icon -->
+    <link rel="apple-touch-icon" href="img/apple/icon5757.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple/touch-icon-ipad-retina.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple/apple-touch-icon.png">
+    <!-- Load It Like A Native App -->
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Customize the Startup Screen -->
+    <link rel="apple-touch-startup-image" href="img/apple/320x460.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)">
+    <link rel="apple-touch-startup-image" href="img/apple/640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="img/apple/640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="img/apple/768x1004.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)">
+    <link rel="apple-touch-startup-image" href="img/apple/748x1024.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)">
+    <link rel="apple-touch-startup-image" href="img/apple/1536x2008.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="img/apple/1496x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)">
+    <!--Favicon Website-->
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div id="fondoBlanco" class="cargando" style="display:none;"></div>
+    <div id="bloquea" class="loaderSpin" style="display:none;"></div>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#" id="botm"><img src="img/left-curse.svg"></a>
+                </li>
+                <li><a href="principal.html" title="Inicio">Home</a></li>
+                <!--<li><a href="#" title="Referencias nuevas">Referencias nuevas</a></li>-->
+                <li><a href="#" title="Favoritos">Favorites</a></li>
+                <li><a href="contacto.html" title="Contáctenos">Contact Us</a></li>
+                <li>
+                    <a target="_blank" href="http://premiumfilters.com.co/" title="Visitar el sitio web">Web Site</a>
+                </li>
+                <li><a href="../index.html" title="Cambiar idioma">Language</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="return">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-3">
+                            <a href="javascript:window.history.back();"><img src="img/left-curse.svg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end return-->
+            <div class="section">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="ttprincipal">My Favorites</h2>
+                            <div class="boxfont">
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div id="pnlAir" class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#primerCollapse" aria-expanded="true" aria-controls="primerCollapse">Favorites</a>
+                                            </h4>
+                                        </div>
+                                        <div id="primerCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div class="scrollTabla">
+                                                <table id="tblFavorito" class="table table-striped">
+                                                    <thead class="tituloTabla">
+                                                        <tr>
+                                                            <th>REF.</th>
+                                                            <th>Delete</th>
+                                                            <!--<th></th>-->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbodyFavorito"></tbody>
+                                                </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END .cajaBlanca -->
+                        </div>
+                        <!-- END .col-md-12 -->
+                    </div>
+                    <!-- END .row -->
+                </div>
+                <!-- END .container-fluid -->
+            </div>
+            <!-- END section -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <!--<h4 class="modal-title"></h4>-->
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tr class="tituloTabla">
+                                    <td colspan="2" id="ref"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" id="image"><img style="width: 100%; max-width: 100%;" id="imgFiltro" src=""></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">Type: </td>
+                                    <td id="linea"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">Style: </td>
+                                    <td id="tFiltro"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">Filter Type: </td>
+                                    <td id="tipo"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">NameA: </td>
+                                    <td id="alto"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">NameB: </td>
+                                    <td id="largo"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tituloTabla">NameC (optional): </td>
+                                    <td id="rosca"></td>
+                                </tr>
+                            </table>
+                            <!--<p align="right"><img src="img/logo_seco_curaduria.png" width="150px" /></p>-->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!--End Modal #MyModal-->
+            <!--<div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul>
+                                <li><a href="#" title="Facebook">Facebook</a></li>
+                                <li><a href="#" title="Twitter">Twitter</a></li>
+                                <li><a href="#" title="Youtube">Youtube</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> end footer-->
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- SCRIPT-->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+    <script src="js/boostrap.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../cordova.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/p07.js"></script>
+</body>
+
+</html>
