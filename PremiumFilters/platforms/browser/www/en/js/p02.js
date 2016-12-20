@@ -17,13 +17,13 @@ $(document).ready(function () {
     var webMethodGetFuel = linkWS("GetFFuel");
     var webMethodGetAC = linkWS("GetFAirAC");
     var webMethodGetSr_Referencias = linkWS("GetSr_Referencias");
-
+    var parametrosGetTipoAplicacion = "{'sIdioma':'i'}";
 
     //Objeto AJAX que se encarga de obtener la informacíon del combo "Tipo Aplicación".
     $.ajax({
         type: "POST",
         url: webMethodGetTipoAplicacion,
-        //data: parameters,
+        data: parametrosGetTipoAplicacion,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: llenarTipoAplicacion,
@@ -86,7 +86,7 @@ $(document).ready(function () {
         var idTipoAplicacion = document.getElementById("select1").value
         var idModelo = document.getElementById("select3").value;
 
-        var parametrosGetCilindraje = "{'Id_RefMk':'" + idModelo + "','Id_TMk':'" + idTipoAplicacion + "'}";
+        var parametrosGetCilindraje = "{'Id_RefMk':'" + idModelo + "','Id_TMk':'" + idTipoAplicacion + "','sIdioma':'i'}";
         $.ajax({
             type: "POST",
             url: webMethodGetCilindraje,
@@ -124,7 +124,7 @@ $(document).ready(function () {
             motCap = $("#select4").text();
         }*/
 
-        var parametrosGetAir = "{'Id_RefMk':'" + idModelo + "','McilL':'" + idCilindraje + "','MotCap':'" + motCap + "'}";
+        var parametrosGetAir = "{'Id_RefMk':'" + idModelo + "','McilL':'" + idCilindraje + "','MotCap':'" + motCap + "','sIdioma':'i'}";
         var parametrosGetOil = parametrosGetAir;
         var parametrosGetFuel = parametrosGetAir;
         var parametrosGetAC = parametrosGetAir;
@@ -234,7 +234,7 @@ function IsJsonString(str) {
 
 //Función que se encarga de llenar el combo "Tipo Aplicación" con la información obtenida del objeto AJAX.
 function llenarTipoAplicacion(result) {
-
+console.log(result.d);
     var objJson = JSON.parse(result.d);
     var HtmltipoAplicacion;
 
