@@ -89,7 +89,7 @@ function msjError() {
     navigator.notification.alert(
         'No tiene favoritos', // message
         alertDismissed, // callback
-        'Información', // title
+        'Information', // title
         'OK'
     );
 
@@ -106,9 +106,9 @@ function guardarFavorito() {
 
 
     navigator.notification.alert(
-        'Agregado a Favoritos', // message
+        'Added to Favorites', // message
         alertDismissed, // callback
-        'Información', // title
+        'Information', // title
         'OK' // buttonName
     );
 
@@ -125,9 +125,9 @@ function eliminarFavorito() {
     db.transaction(queryDB, errorCB);
 
     navigator.notification.alert(
-        'Eliminado de Favoritos', // message
+        'Deleted from Favorites', // message
         alertDismissed, // callback
-        'Información', // title
+        'Information', // title
         'OK' // buttonName
     );
 

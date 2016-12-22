@@ -234,7 +234,7 @@ function IsJsonString(str) {
 
 //Función que se encarga de llenar el combo "Tipo Aplicación" con la información obtenida del objeto AJAX.
 function llenarTipoAplicacion(result) {
-console.log(result.d);
+
     var objJson = JSON.parse(result.d);
     var HtmltipoAplicacion;
 
@@ -460,7 +460,7 @@ function llenarFiltro(id) {
     $("#bloquea").show();
     $("#fondoBlanco").show();
     var webMethodGetFiltro = linkWS("GetFiltro");
-    var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
+    var parametrosGetFiltro = "{'PF_Ref':'" + id + "','sIdioma':'e'}";
     $.ajax({
         type: "POST",
         url: webMethodGetFiltro,

@@ -112,7 +112,7 @@ function IsJsonString(str) {
 //Función que se encarga de llamar objeto AJAX para obtener la información detallada del filtro seleccionado de cualquiera de las grillas.
 function llenarFiltro(id) {
     var webMethodGetFiltro = linkWS("GetFiltro");
-    var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
+    var parametrosGetFiltro = "{'PF_Ref':'" + id + "','sIdioma':'i'}";
 
     $("#bloquea").show();
     $("#fondoBlanco").show();

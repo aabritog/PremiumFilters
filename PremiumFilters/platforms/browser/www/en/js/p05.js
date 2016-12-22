@@ -62,7 +62,8 @@ function llenarFiltro(id) {
     $("#bloquea").show();
     $("#fondoBlanco").show();
     var webMethodGetFiltro = linkWS("GetFiltro");
-    var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
+    var parametrosGetFiltro = "{'PF_Ref':'" + id + "','sIdioma':'i'}";
+
     $.ajax({
         type: "POST",
         url: webMethodGetFiltro,

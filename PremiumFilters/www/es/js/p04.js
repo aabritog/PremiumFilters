@@ -66,7 +66,7 @@ function llenarFiltro(id) {
     //var webMethodGetFiltro=  linkWS('GetFiltro');
     //console.log(webMethodGetFiltro);
     var webMethodGetFiltro = linkWS("GetFiltro");
-    var parametrosGetFiltro = "{'PF_Ref':'" + id + "'}";
+    var parametrosGetFiltro = "{'PF_Ref':'" + id + "','sIdioma':'e'}";
     $.ajax({
         type: "POST",
         url: webMethodGetFiltro,
