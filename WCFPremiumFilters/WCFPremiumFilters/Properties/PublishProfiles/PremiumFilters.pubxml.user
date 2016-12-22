@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAl/2xkD1uc0esBWaLVRHYXQAAAAACAAAAAAAQZgAAAAEAACAAAAANyPG3zX8hte3iEUy5INdmiCw2YmstNrZAi334JVQzVAAAAAAOgAAAAAIAACAAAABIM80Y8wLLZ+CEmzwX8g052TBwOE9uYCWeP+6xzyU7yiAAAABu6s4d0z6uhPC4k48PmjiWzjK/yxH+wBreXlggKXXkHkAAAACRqdYOjJpsS44rU9ZXnC4CFyl6UVrZVAvBMPN8V9OkHRZ0xI/9RwzZdV6UViGi6je3o2H7Veet7pVrrOw7KXdT</EncryptedPassword>
+    <_PublishTargetUrl>ftp://ftp.smarterasp.net</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/24/2016 16:45:46</publishTime>
+    </File>
+    <File Include="bin/WCFPremiumFilters.dll">
+      <publishTime>12/22/2016 00:10:25</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>09/24/2016 16:45:49</publishTime>
+    </File>
+    <File Include="WCFPremiumFilters.asmx">
+      <publishTime>09/24/2016 16:37:29</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/22/2016 00:10:47</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
