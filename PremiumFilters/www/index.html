@@ -148,13 +148,24 @@
             states[Connection.NONE]     = 'No network connection';
 
             //alert('Connection type: ' + states[networkState]);
-
-            navigator.notification.alert(
-            'Tipo Conexion: '+states[networkState], // message
-            alertDismissed, // callback
-            'Información', // title
-            'OK'
-            );
+            if (networkState == 'none' || networkState== 'cell'){
+                navigator.notification.alert(
+                'No hay conexión. Verifique / No connection. Check it please', // message
+                alertDismissed, // callback
+                'Información', // title
+                'OK'
+                );
+                //navigator.app.exitApp();
+            }else{
+                if(networkState == 'cell_2G'){
+                    navigator.notification.alert(
+                    'Conexión es muy lenta. Verifique / Connection is very slow. Check it please', // message
+                    alertDismissed, // callback
+                    'Información', // title
+                    'OK'
+                    );
+                }
+            }
         }
 
         function alertDismissed() {
