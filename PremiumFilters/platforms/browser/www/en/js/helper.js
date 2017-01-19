@@ -1,4 +1,4 @@
-var domainWS="http://a212873451-001-site1.atempurl.com/WCFPremiumFilters.asmx/";
+var domainWS="http://a212873452-001-site1.itempurl.com/WCFPremiumFilters.asmx/";
 var consulta;
 var consultaValidar = "";
 var consultaExistencia = "";
