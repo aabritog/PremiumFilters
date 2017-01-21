@@ -21,7 +21,7 @@ $(document).ready(function () {
             navigator.notification.alert(
                 msjValidaciones("e", 1), // message
                 alertDismissed, // callback
-                'Información', // title
+                'Information', // title
                 'OK' // buttonName
             );
 
@@ -132,7 +132,7 @@ function llenarSr_Referencias(result) {
         navigator.notification.alert(
             msjValidaciones("e", 0), // message
             alertDismissed, // callback
-            'Información', // title
+            'Information', // title
             'OK' // buttonName
         );
         $("#pnlRefPremium").hide();

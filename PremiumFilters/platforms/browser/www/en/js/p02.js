@@ -295,10 +295,10 @@ function llenarCilindraje(result) {
         if (document.getElementById("select1").value == 1 || document.getElementById("select1").value == 4) {
             HtmlCilindraje += "<option value='" + item.McilL + "'>" + item.Mcc + "</option>";
 
-            $("#lblCilindraje").html('Cilindraje:');
+            $("#lblCilindraje").html('C.C:');
         } else {
             HtmlCilindraje += "<option value='"+ item.MotCap +"'>" + item.MotCap + "</option>";
-            $("#lblCilindraje").html('Motor/Capacidad:');
+            $("#lblCilindraje").html('Motor:');
         }
 
     });

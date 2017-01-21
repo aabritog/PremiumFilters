@@ -26,9 +26,9 @@ function funcionReady() {
                 $("#bloquea").hide();
                 $("#fondoBlanco").hide();
                 navigator.notification.alert(
-                    'No tiene favoritos', // message
+                    'No favorites', // message
                     alertDismissed, // callback
-                    'Información', // title
+                    'Information', // title
                     'OK'
                 );
                 //msjError(); // buttonName

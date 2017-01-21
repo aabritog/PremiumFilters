@@ -20,7 +20,7 @@ $(document).ready(function () {
             navigator.notification.alert(
                 msjValidaciones("e", 1), // message
                 alertDismissed, // callback
-                'Información', // title
+                'Information', // title
                 'OK' // buttonName
             );
 
@@ -123,7 +123,7 @@ function llenarSt_CompetidoresRef(result) {
         navigator.notification.alert(
             msjValidaciones("e", 0), // message
             alertDismissed, // callback
-            'Información', // title
+            'Information', // title
             'OK' // buttonName
         );
         $("#pnlEquivalencias").hide();

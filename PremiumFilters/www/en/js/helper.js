@@ -12,10 +12,10 @@ function msjValidaciones(lang,tipo) {
     if (lang=="e"){
         switch(tipo){
             case 0: //para busqueda sin resultados
-                msj="Búsqueda sin resultados";
+                msj="No search results";
                 break;
             case 1: //valida campo de busqueda vacio
-                msj="El campo de busqueda no puede estar vacío";
+                msj="The search field can not be empty";
                 break;
         }
     }
@@ -87,7 +87,7 @@ function comprobarExistencia(idRef, termino) {
 
 function msjError() {
     navigator.notification.alert(
-        'No tiene favoritos', // message
+        'No favorites', // message
         alertDismissed, // callback
         'Information', // title
         'OK'
