@@ -4,7 +4,7 @@
 var resultados = false;
 $(document).ready(function () {
 
-    
+
     $("#bloquea").show();
     $("#fondoBlanco").show();
     //Variables que contiene la ruta de los Web  Services a llamar.
@@ -297,7 +297,7 @@ function llenarCilindraje(result) {
 
             $("#lblCilindraje").html('Cilindraje:');
         } else {
-            HtmlCilindraje += "<option value='"+ item.MotCap +"'>" + item.MotCap + "</option>";
+            HtmlCilindraje += "<option value='" + item.MotCap + "'>" + item.MotCap + "</option>";
             $("#lblCilindraje").html('Motor/Capacidad:');
         }
 
@@ -340,7 +340,7 @@ function llenarAir(result) {
 
     } else {
         $("#pnlAir").hide();
-        
+
     }
 }
 
@@ -483,18 +483,27 @@ function detalleFiltro(result) {
     var rutaImgFiltro = "http://premiumfilters.com.co/ImagesFilters/";
 
     $.each(objJsonFiltro, function (i, item) {
-
+        console.log('ET_ANCHO: ' + item.ET_Ancho + ' typeof: ' + typeof (item.ET_Ancho));
         $("#imgFiltro").attr("src", rutaImgFiltro + item.IMG);
         $("#ref").html(item.PF_Ref);
         $("#linea").html(item.RefLinea);
         $("#tFiltro").html(item.TipoFiltro);
         $("#tipo").html(item.Tipo);
-        $("#largo").html(item.DLargo);
         $("#alto").html(item.DAl);
-        $("#rosca").html(item.DAncho);
         $("#altoET").html(item.ET_Al);
         $("#LargoET").html(item.ET_Lar);
-        $("#AnchoET").html(item.ET_Ancho);
+        if (item.ET_Ancho === null) {
+            $("#AnchoET").hide();
+            //$("#AnchoET").html(item.ET_Ancho);
+            $("#largo").html(item.DAncho);
+            $("#rosca").hide();
+        }else{
+            $("#AnchoET").show();
+            $("#AnchoET").html(item.ET_Ancho);
+            $("#largo").html(item.DLargo);
+            $("#rosca").html(item.DAncho).show();
+        }
+
     });
     $('#myModal').modal('show');
     //$.mobile.loading("hide");
