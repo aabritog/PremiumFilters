@@ -483,7 +483,7 @@ function detalleFiltro(result) {
     var rutaImgFiltro = "http://premiumfilters.com.co/ImagesFilters/";
 
     $.each(objJsonFiltro, function (i, item) {
-        console.log('ET_ANCHO: ' + item.ET_Ancho + ' typeof: ' + typeof (item.ET_Ancho));
+//        console.log('ET_ANCHO: ' + item.ET_Ancho + ' typeof: ' + typeof (item.ET_Ancho));
         $("#imgFiltro").attr("src", rutaImgFiltro + item.IMG);
         $("#ref").html(item.PF_Ref);
         $("#linea").html(item.RefLinea);
