@@ -92,6 +92,9 @@ function detalleFiltro(result) {
         $("#largo").html(item.DLargo);
         $("#alto").html(item.DAl);
         $("#rosca").html(item.DAncho);
+        $("#altoET").html(item.ET_Al);
+        $("#LargoET").html(item.ET_Lar);
+        $("#AnchoET").html(item.ET_Ancho);
     });
     $('#myModal').modal('show');
     $("#bloquea").hide();
