@@ -1,4 +1,5 @@
-$(document).ready(function () {
+//$(document).ready(function () {
+function funcionReady() {
     $("#bloquea").show();
     $("#fondoBlanco").show();
     var htmlTabla;
@@ -44,10 +45,10 @@ $(document).ready(function () {
         }, errorCB);
     });
 
+}
 
 
-
-});
+//});
 
 function llenarFiltro(id) {
     $("#bloquea").show();
