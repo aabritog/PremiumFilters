@@ -3,11 +3,11 @@ var totalPages;
 //------------------------------------------------------------------------------
 //  BLOQUE DE FUNCIONES JQUERY
 //------------------------------------------------------------------------------
-$(document).ready(function() {
+$(document).ready(function () {
 
 
-    (function($) {
-        $.get = function(key) {
+    (function ($) {
+        $.get = function (key) {
             key = key.replace(/[\[]/, '\\[');
             key = key.replace(/[\]]/, '\\]');
             var pattern = "[\\?&]" + key + "=([^&#]*)";
@@ -40,7 +40,7 @@ $(document).ready(function() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: llenarNumPagesAllfillters,
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
     });
@@ -52,13 +52,13 @@ $(document).ready(function() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: llenarAllfilters,
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
     });
 
     //Evento jQuery que se encarga de llamar objeto AJAX que obtiene la informacíon del combo "Marca Vehículo".
-    $("#select1").change(function() {
+    $("#select1").change(function () {
         var idTipoFiltro = document.getElementById("select1").value;
         var parametrosGetNumberPageAllfillters = "{'Tipo':'" + idTipoFiltro + "'}";
         var parametrosMovePageAllfillters = "{'Page':'1','Tipo':'" + idTipoFiltro + "'}";
@@ -73,7 +73,7 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarNumPagesAllfillters,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
@@ -85,7 +85,7 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarAllfilters,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
@@ -124,7 +124,7 @@ function llenarFiltro(id) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: detalleFiltro,
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
     });
@@ -137,7 +137,7 @@ function detalleFiltro(result) {
     var HtmlFiltro;
     var rutaImgFiltro = "http://premiumfilters.com.co/ImagesFilters/";
 
-    $.each(objJsonFiltro, function(i, item) {
+    $.each(objJsonFiltro, function (i, item) {
 
         $("#imgFiltro").attr("src", rutaImgFiltro + item.IMG);
         $("#ref").html(item.PF_Ref);
@@ -148,7 +148,7 @@ function detalleFiltro(result) {
         $("#alto").html(item.DAl);
         $("#rosca").html(item.DAncho);
     });
-    
+
     $('#myModal').modal('show');
     $("#bloquea").hide();
     $("#fondoBlanco").hide();
@@ -162,7 +162,7 @@ function llenarGetSr_Allfilters(result) {
         var objJsonAllfilters = JSON.parse(result.d);
         var HtmlAllfilters;
 
-        $.each(objJsonAllfilters, function(i, item) {
+        $.each(objJsonAllfilters, function (i, item) {
 
             HtmlAllfilters += "<tr><td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarFiltro(this.id);'>" + item["PREMIUM Ref"] + "</a></td><td>" + item.Tipo + "</td><td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarAplicaciones(this.id);'>" + item.Aplicaciones + "</a></td><td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarEquivalencias(this.id);'>" + item.Equivalencias + "</a></td></tr>"
         });
@@ -188,7 +188,7 @@ function llenarAplicaciones(id) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: detalleAplicaciones,
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
     });
@@ -200,7 +200,7 @@ function detalleAplicaciones(result) {
     var objJsondetalleAplicaciones = JSON.parse(result.d);
     var HtmldetalleAplicaciones;
 
-    $.each(objJsondetalleAplicaciones, function(i, item) {
+    $.each(objJsondetalleAplicaciones, function (i, item) {
         HtmldetalleAplicaciones += "<tr><td>" + item.Fabricante + "</td><td>" + item.Modelo + "</td><td>" + item.McilL + "</td><td>" + item.Desde + "</td><td>" + item.Hasta + "</td><td>" + item.Motor + "</td></tr>"
     });
 
@@ -226,7 +226,7 @@ function llenarEquivalencias(id) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: detalleEquivalencias,
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
     });
@@ -238,7 +238,7 @@ function detalleEquivalencias(result) {
     var objJsondetalleEquivalencias = JSON.parse(result.d);
     var HtmldetalleEquivalencias;
 
-    $.each(objJsondetalleEquivalencias, function(i, item) {
+    $.each(objJsondetalleEquivalencias, function (i, item) {
         HtmldetalleEquivalencias += "<tr><td>" + item.Fabricante + "</td><td>" + item.Equivalencia + "</td></tr>"
     });
 
@@ -253,7 +253,7 @@ function llenarNumPagesAllfillters(result) {
 
     if (IsJsonString(result.d)) {
         var objJsonPages = JSON.parse(result.d);
-        $.each(objJsonPages, function(i, item) {
+        $.each(objJsonPages, function (i, item) {
             totalPages = item.Cantidad;
         });
 
@@ -280,30 +280,40 @@ function llenarAllfilters(result) {
         var objJsonSrFichas = JSON.parse(result.d);
         var HtmlAllfilters;
 
-        $.each(objJsonSrFichas, function(i, item) {
-            
-        
-            
-            HtmlAllfilters += "<tr>";
-            HtmlAllfilters += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarFiltro(this.id)'>" + item["PREMIUM Ref"] + "</a></td>";
-            HtmlAllfilters += "<td>" + item.Tipo + "</td>";
-            HtmlAllfilters += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarAplicaciones(this.id);'>View</a></td>";
-            HtmlAllfilters += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarEquivalencias(this.id);'>View</a></td>";
-            HtmlAllfilters += "</tr>";
+        $.each(objJsonSrFichas, function (i, item) {
+
+            comprobarExistencia(item["PREMIUM Ref"], function (r) {
+
+                HtmlAllfilters += "<tr>";
+                HtmlAllfilters += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarFiltro(this.id)'>" + item["PREMIUM Ref"] + "</a></td>";
+                HtmlAllfilters += "<td>" + item.Tipo + "</td>";
+                HtmlAllfilters += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarAplicaciones(this.id);'>View</a></td>";
+                HtmlAllfilters += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarEquivalencias(this.id);'>View</a></td>";
+
+                
+                if (r) {
+                    HtmlAllfilters += "<td><ul id='" + item["PREMIUM Ref"] + "F' class='pollsSi'><li><a onclick='comprobarFavorito(\"" + item["PREMIUM Ref"] + "\");'>1</a></li></td></tr>";
+                } else {
+                    HtmlAllfilters += "<td><ul id='" + item["PREMIUM Ref"] + "F' class='pollsNo'><li><a onclick='comprobarFavorito(\"" + item["PREMIUM Ref"] + "\");'>1</a></li></td></tr>";
+                }
+
+                $("#tbodyTodas").html(HtmlAllfilters);
+                //HtmlAllfilters += "</tr>";
+            });
         });
 
-        $("#tbodyTodas").html(HtmlAllfilters);
+
         $("#atrasButton").show();
         $("#siguienteButton").show();
     } else {
         navigator.notification.alert(
-            msjValidaciones("e",0), // message
+            msjValidaciones("e", 0), // message
             alertDismissed, // callback
             'Información', // title
             'OK' // buttonName
         );
         $("#pnlTodas").hide();
-       
+
     }
 
     $("#bloquea").hide();
@@ -330,7 +340,7 @@ function siguienteFunction(numPage) {
         var webMethodGetMovePageAllfillters = linkWS("MovePageAllfillters");
         var parametrosMovePageAllfillters = "{'Page':'" + numPage + "','Tipo':'" + idTipoFiltro + "'}";
 
-        
+
 
         $.ajax({
             type: "POST",
@@ -339,7 +349,7 @@ function siguienteFunction(numPage) {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarAllfilters,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
@@ -385,7 +395,7 @@ function atrasFunction(numPage) {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: llenarAllfilters,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus + ": " + XMLHttpRequest.responseText);
             }
         });
