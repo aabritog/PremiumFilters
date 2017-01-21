@@ -138,15 +138,27 @@ function detalleFiltro(result) {
     var rutaImgFiltro = "http://premiumfilters.com.co/ImagesFilters/";
 
     $.each(objJsonFiltro, function (i, item) {
-
+        //console.log('ET_ANCHO: ' + item.ET_Ancho + ' typeof: ' + typeof (item.ET_Ancho));
         $("#imgFiltro").attr("src", rutaImgFiltro + item.IMG);
         $("#ref").html(item.PF_Ref);
         $("#linea").html(item.RefLinea);
         $("#tFiltro").html(item.TipoFiltro);
         $("#tipo").html(item.Tipo);
-        $("#largo").html(item.DLargo);
         $("#alto").html(item.DAl);
-        $("#rosca").html(item.DAncho);
+        $("#altoET").html(item.ET_Al);
+        $("#LargoET").html(item.ET_Lar);
+        if (item.ET_Ancho === null) {
+            $("#AnchoET").hide();
+            //$("#AnchoET").html(item.ET_Ancho);
+            $("#largo").html(item.DAncho);
+            $("#rosca").hide();
+        } else {
+            $("#AnchoET").show();
+            $("#AnchoET").html(item.ET_Ancho);
+            $("#largo").html(item.DLargo);
+            $("#rosca").html(item.DAncho).show();
+        }
+
     });
 
     $('#myModal').modal('show');
@@ -290,7 +302,7 @@ function llenarAllfilters(result) {
                 HtmlAllfilters += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarAplicaciones(this.id);'>View</a></td>";
                 HtmlAllfilters += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarEquivalencias(this.id);'>View</a></td>";
 
-                
+
                 if (r) {
                     HtmlAllfilters += "<td><ul id='" + item["PREMIUM Ref"] + "F' class='pollsSi'><li><a onclick='comprobarFavorito(\"" + item["PREMIUM Ref"] + "\");'>1</a></li></td></tr>";
                 } else {
