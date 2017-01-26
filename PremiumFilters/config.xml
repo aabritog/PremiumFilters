@@ -1,5 +1,5 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
-  <name>PremiumFilters</name>
+  <name>Premium Filters</name>
   <description>High Quality Filters</description>
   <author href="http://phonegap.com" email="ing.antonyab@gmail.com">Ing. Antony Aguilera</author>
   <content src="index.html"/>
