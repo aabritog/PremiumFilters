@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.premiumfilters.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Premium Filters</name>
     <description>High Quality Filters</description>
-    <author email="ing.antonyab@gmail.com" href="http://phonegap.com">Ing. Antony Aguilera</author>
+    <author email="contacto@operatecnologias.com" href="http://www.operatecnologias.com">Opera Tecnologias</author>
     <content src="index.html" />
     <splash qualifier="land-hdpi" src="res/drawable-land-hdpi/splash.png" />
     <splash qualifier="land-ldpi" src="res/drawable-land-ldpi/splash.png" />
@@ -42,7 +42,7 @@
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="14" />
-    <preference name="android-targetSdkVersion" value="22" />
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-targetSdkVersion" value="23" />
     <preference name="android-installLocation" value="auto" />
 </widget>

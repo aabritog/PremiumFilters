@@ -1,7 +1,7 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.premiumfilters.app" version="1.0.0">
   <name>Premium Filters</name>
   <description>High Quality Filters</description>
-  <author href="http://phonegap.com" email="ing.antonyab@gmail.com">Ing. Antony Aguilera</author>
+  <author href="http://www.operatecnologias.com" email="contacto@operatecnologias.com">Opera Tecnologias</author>
   <content src="index.html"/>
   <feature name="NetworkStatus">
     <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
@@ -19,8 +19,8 @@
   <preference name="show-splash-screen-spinner" value="true"/>
   <preference name="auto-hide-splash-screen" value="true"/>
   <preference name="disable-cursor" value="false"/>
-  <preference name="android-minSdkVersion" value="14"/>
-  <preference name="android-targetSdkVersion" value="22" />
+  <preference name="android-minSdkVersion" value="19"/>
+  <preference name="android-targetSdkVersion" value="23" />
   <preference name="android-installLocation" value="auto"/>
   <!--<preference name="SplashScreenDelay" value="5000" />-->
   <!--<gap:plugin name="org.apache.cordova.battery-status"/>
@@ -98,12 +98,33 @@
       <icon qualifier="xhdpi" src="res/drawable-xhdpi/icon.png" />
       <icon qualifier="xxhdpi" src="res/drawable-xxhdpi/icon.png" />
       <icon qualifier="xxxhdpi" src="res/drawable-xxxhdpi/icon.png" />
-
-
   </platform>
 
-  <platform name="ios">
-    <allow-intent href="itms:*"/>
-    <allow-intent href="itms-apps:*"/>
-  </platform>
+<platform name="ios">
+      <preference name="SplashScreen" value="splash" />
+      <preference name="SplashScreenDelay" value="3000" />
+      <preference name="ShowSplashScreenSpinner" value="false" />
+      <preference name="FadeSplashScreen" value="false" />
+      <preference name="SplashMaintainAspectRatio" value="true" />
+      <preference name="SplashShowOnlyFirstTime" value="false" />
+      <preference name="SplashShowOnlyFirstTime" value="false" />  
+      <!-- images are determined by width and height. The following are supported -->
+      <splash src="res/screen/ios/Default~iphone.png" width="320" height="480"/>
+      <splash src="res/screen/ios/Default@2x~iphone.png" width="640" height="960"/>
+      <splash src="res/screen/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
+      <splash src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+      <splash src="res/screen/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
+      <splash src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+      <splash src="res/screen/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
+      <!--<splash src="res/screen/ios/Default-667h.png" width="750" height="1334"/>-->
+      <!--<splash src="res/screen/ios/Default-736h.png" width="1242" height="2208"/>-->
+      <!--<splash src="res/screen/ios/Default-Landscape-736h.png" width="2208" height="1242"/>-->
+      <!-- iPhone / iPod Touch -->
+      <icon src="res/ios/icon.png" width="57" height="57" />
+      <icon src="res/ios/icon@2x.png" width="114" height="114" />
+      <!-- iPad -->
+      <icon src="res/ios/icon-72.png" width="72" height="72" />
+      <icon src="res/ios/icon-72@2x.png" width="144" height="144" />
+</platform>
+
 </widget>
