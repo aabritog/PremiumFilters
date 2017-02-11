@@ -1,22 +1,66 @@
 //------------------------------------------------------------------------------
 //  BLOQUE DE FUNCIONES JQUERY
 //------------------------------------------------------------------------------
-$(document).ready(function () {
+$(document).ready(function() {
 
+    var webMethodGetSt_CompetidoresRef = linkWS("GetSt_CompetidoresRef");
 
 
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
-    $("#btnBuscar").click(function () {
+    $(document).keydown(function(e) {
+        try {
+            if (e.which == 13) {
+                $("#bloquea").show();
+                $("#fondoBlanco").show();
+
+                var idOtraRef = document.getElementById("inpBuscar").value
+                var parametrosGetSt_CompetidoresRef = "{'OtraRef':'" + idOtraRef + "'}";
+                //console.log(idPF_Ref);
+                //console.log(parametrosGetSr_Referencias);
+                if (idOtraRef == "") {
+                    $("#bloquea").hide();
+                    $("#fondoBlanco").hide();
+                    navigator.notification.alert(
+                        msjValidaciones("e", 1), // message
+                        alertDismissed, // callback
+                        'Información', // title
+                        'OK' // buttonName
+                    );
+
+                } else {
+
+                    //Objeto AJAX para la grilla de los Filtros de Aire.
+                    $.ajax({
+                        type: "POST",
+                        url: webMethodGetSt_CompetidoresRef,
+                        data: parametrosGetSt_CompetidoresRef,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: llenarSt_CompetidoresRef,
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            alert(textStatus + ": " + XMLHttpRequest.responseText);
+                        }
+                    });
+                }
+
+                e.preventDefault();
+            }
+        } catch (e) {
+            console.log('error: ' + e.message);
+        }
+    });
+
+    $("#btnBuscar").click(function() {
 
         $("#bloquea").show();
         $("#fondoBlanco").show();
         //Variables que contiene la ruta de los Web  Services a llamar.
-        var webMethodGetSt_CompetidoresRef = linkWS("GetSt_CompetidoresRef");
-
         var idOtraRef = document.getElementById("inpBuscar").value
         var parametrosGetSt_CompetidoresRef = "{'OtraRef':'" + idOtraRef + "'}";
 
         if (idOtraRef == "") {
+            $("#bloquea").hide();
+            $("#fondoBlanco").hide();
             navigator.notification.alert(
                 msjValidaciones("e", 1), // message
                 alertDismissed, // callback
@@ -33,7 +77,7 @@ $(document).ready(function () {
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: llenarSt_CompetidoresRef,
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert(textStatus + ": " + XMLHttpRequest.responseText);
                 }
             });
@@ -70,7 +114,7 @@ function llenarFiltro(id) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: detalleFiltro,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
     });
@@ -83,8 +127,8 @@ function detalleFiltro(result) {
     var HtmlFiltro;
     var rutaImgFiltro = "http://premiumfilters.com.co/ImagesFilters/";
 
-    $.each(objJsonFiltro, function (i, item) {
-//        console.log('ET_ANCHO: ' + item.ET_Ancho + ' typeof: ' + typeof (item.ET_Ancho));
+    $.each(objJsonFiltro, function(i, item) {
+        //        console.log('ET_ANCHO: ' + item.ET_Ancho + ' typeof: ' + typeof (item.ET_Ancho));
         $("#imgFiltro").attr("src", rutaImgFiltro + item.IMG);
         $("#ref").html(item.PF_Ref);
         $("#linea").html(item.RefLinea);
@@ -98,7 +142,7 @@ function detalleFiltro(result) {
             //$("#AnchoET").html(item.ET_Ancho);
             $("#largo").html(item.DAncho);
             $("#rosca").hide();
-        }else{
+        } else {
             $("#AnchoET").show();
             $("#AnchoET").html(item.ET_Ancho);
             $("#largo").html(item.DLargo);
@@ -121,7 +165,7 @@ function llenarSt_CompetidoresRef(result) {
         var objJsonCompetidoresRef = JSON.parse(result.d);
         var HtmlCompetidoresRef;
 
-        $.each(objJsonCompetidoresRef, function (i, item) {
+        $.each(objJsonCompetidoresRef, function(i, item) {
             HtmlCompetidoresRef += "<tr>";
             HtmlCompetidoresRef += "<td><a id='" + item["PREMIUM Ref"] + "' src='#' onclick='llenarFiltro(this.id);'>" + item["PREMIUM Ref"] + "</a></td>";
             HtmlCompetidoresRef += "<td>" + item["Otra Ref"] + "</td><td>" + item.Fabricante + "</td>";
@@ -159,7 +203,7 @@ function llenarAplicaciones(id) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: detalleAplicaciones,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert(textStatus + ": " + XMLHttpRequest.responseText);
         }
     });
@@ -171,7 +215,7 @@ function detalleAplicaciones(result) {
     var objJsondetalleAplicaciones = JSON.parse(result.d);
     var HtmldetalleAplicaciones;
 
-    $.each(objJsondetalleAplicaciones, function (i, item) {
+    $.each(objJsondetalleAplicaciones, function(i, item) {
         HtmldetalleAplicaciones += "<tr><td>" + item.Fabricante + "</td><td>" + item.Modelo + "</td><td>" + item.McilL + "</td><td>" + item.Desde + "</td><td>" + item.Hasta + "</td><td>" + item.Motor + "</td></tr>"
     });
 

@@ -199,16 +199,19 @@ header {
 }
 
 .section {
-    background: url(../img/imagen-back.jpg) no-repeat;
+    background: url(../img/imagen-back.jpg) no-repeat center center fixed;
     background-size: cover;
+    height: 100%;
     padding: 8% 0 41% 0;
 }
 
 .section2 {
-    background: url(../img/imagen-back.jpg) no-repeat;
+    background: url(../img/imagen-back.jpg) no-repeat center center fixed;
     background-size: cover;
+    height: 100%;
     padding: 0 0 41% 0;
 }
+
 
 .mainmenu {
     padding: 0;
@@ -409,7 +412,7 @@ header {
     display: block;
     max-width: 50px;
     width: 100%;
-    padding: 7px 0;
+    padding: 20px 0;
 }
 
 .ttprincipal {
@@ -697,6 +700,14 @@ tbody>tr>td {
     text-align: center;
 }
 
+header>div[class|="container"]{
+  margin-top: 20px;
+}
+
+div[id="page-content-wrapper"]{
+  height: 100%
+}
+
 @media(min-width:5000px) {
     #wrapper {
         padding-left: 250px;
@@ -798,8 +809,8 @@ tbody>tr>td {
     }
 
     .mainmenulanguages li a,.mainmenulanguages li a:hover{background-size: 38px;font-size: 1.3em}
-    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }  
-    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }  
+    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }
+    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }
     .mainmenulanguages li:nth-child(3) a{background-position: 98% -103px; }
 }
 
@@ -959,8 +970,8 @@ tbody>tr>td {
     }
 
     .mainmenulanguages li a,.mainmenulanguages li a:hover{background-size: 38px;font-size: 1.3em}
-    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }  
-    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }  
+    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }
+    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }
     .mainmenulanguages li:nth-child(3) a{background-position: 98% -103px; }
 }
 
@@ -1064,7 +1075,6 @@ tbody>tr>td {
 
 .mainmenulanguages li a:hover{color:#ffffff; background-size: 50px; background-color: #e30413}
 
-.mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }  
-.mainmenulanguages li:nth-child(2) a{background-position: 98% -68px; }  
-.mainmenulanguages li:nth-child(3) a{background-position: 98% -137px; }  
-
+.mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }
+.mainmenulanguages li:nth-child(2) a{background-position: 98% -68px; }
+.mainmenulanguages li:nth-child(3) a{background-position: 98% -137px; }

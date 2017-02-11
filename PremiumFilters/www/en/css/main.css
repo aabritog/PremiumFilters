@@ -26,7 +26,7 @@ body {
     color: #c1151d;
     background: none;
     border: none;
-    font-size: 3em;
+    font-size: 4em;
     display: block;
     text-align: left;
 }
@@ -204,14 +204,16 @@ background-size: 23px;}
 }
 
 .section {
-    background: url(../img/imagen-back.jpg) no-repeat;
+    background: url(../img/imagen-back.jpg) no-repeat center center fixed;
     background-size: cover;
-    padding: 8% 0 45% 0;
+    height: 100%;
+    padding: 8% 0 41% 0;
 }
 
 .section2 {
-    background: url(../img/imagen-back.jpg) no-repeat;
+    background: url(../img/imagen-back.jpg) no-repeat center center fixed;
     background-size: cover;
+    height: 100%;
     padding: 0 0 41% 0;
 }
 
@@ -470,8 +472,9 @@ background-size: 23px;}
 }
 
 .section3 {
-    background: url(../img/imagen-back.jpg) no-repeat;
+    background: url(../img/imagen-back.jpg) no-repeat center center fixed;
     background-size: cover;
+    height: 100%
 }
 
 .photo {
@@ -702,6 +705,14 @@ tbody>tr>td {
     text-align: center;
 }
 
+header>div[class|="container"]{
+  margin-top: 20px;
+}
+
+div[id="page-content-wrapper"]{
+  height: 100%
+}
+
 @media(min-width:5000px) {
     #wrapper {
         padding-left: 250px;
@@ -733,7 +744,7 @@ tbody>tr>td {
         font-size: 2em;
     }
     #menu-toggle {
-        font-size: 2em;
+        font-size: 3em;
     }
     .mainmenu li a,
     .mainmenu li a:hover {
@@ -803,22 +814,22 @@ tbody>tr>td {
     }
 
     .mainmenuplus li a,.mainmenuplus li a:hover{background-size: 50px;font-size: 1em}
-    .mainmenuplus li:nth-child(1) a{background-position: 98% 15px; }  
-    .mainmenuplus li:nth-child(2) a{background-position: 98% -48px; }  
-    .mainmenuplus li:nth-child(3) a{background-position: 98% -107px; }  
+    .mainmenuplus li:nth-child(1) a{background-position: 98% 15px; }
+    .mainmenuplus li:nth-child(2) a{background-position: 98% -48px; }
+    .mainmenuplus li:nth-child(3) a{background-position: 98% -107px; }
     .mainmenuplus li:nth-child(4) a{background-position: 98% -167px; }
 
     .mainmenulanguages li a,.mainmenulanguages li a:hover{background-size: 38px;font-size: 1.3em}
-    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }  
-    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }  
+    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }
+    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }
     .mainmenulanguages li:nth-child(3) a{background-position: 98% -103px; }
 
     .cajaBlanca h1{font-size: 34px;}
     .cajaBlanca h2{font-size: 29px;}
     .cajaBlanca h3{font-size: 22px;}
-    .cajaBlanca p{font-size: xx-small;} 
-    .cajaBlanca p>a{font-size: 15px;}        
-    .cajaBlanca{background: #fff; padding: 20px 20px 20% 20px;}   
+    .cajaBlanca p{font-size: xx-small;}
+    .cajaBlanca p>a{font-size: 15px;}
+    .cajaBlanca{background: #fff; padding: 20px 20px 20% 20px;}
 }
 
 @media(min-width:321px) and (max-width:375px) {
@@ -829,7 +840,7 @@ tbody>tr>td {
         font-size: 2em;
     }
     #menu-toggle {
-        font-size: 2em;
+        font-size: 3em;
     }
     .mainmenu li a,
     .mainmenu li a:hover {
@@ -899,22 +910,22 @@ tbody>tr>td {
     }
 
     .mainmenulanguages li a,.mainmenulanguages li a:hover{background-size: 38px;font-size: 1.3em}
-    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }  
-    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }  
+    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }
+    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }
     .mainmenulanguages li:nth-child(3) a{background-position: 98% -103px; }
 
     .mainmenuplus li a,.mainmenuplus li a:hover{background-size: 50px;font-size: 1em}
-    .mainmenuplus li:nth-child(1) a{background-position: 98% 15px; }  
-    .mainmenuplus li:nth-child(2) a{background-position: 98% -48px; }  
-    .mainmenuplus li:nth-child(3) a{background-position: 98% -107px; }  
+    .mainmenuplus li:nth-child(1) a{background-position: 98% 15px; }
+    .mainmenuplus li:nth-child(2) a{background-position: 98% -48px; }
+    .mainmenuplus li:nth-child(3) a{background-position: 98% -107px; }
     .mainmenuplus li:nth-child(4) a{background-position: 98% -167px; }
 
     .cajaBlanca h1{font-size: 34px;}
     .cajaBlanca h2{font-size: 29px;}
     .cajaBlanca h3{font-size: 22px;}
-    .cajaBlanca p{font-size: x-small;} 
-    .cajaBlanca p>a{font-size: 15px;}        
-    .cajaBlanca{background: #fff; padding: 20px 20px 20% 20px;} 
+    .cajaBlanca p{font-size: x-small;}
+    .cajaBlanca p>a{font-size: 15px;}
+    .cajaBlanca{background: #fff; padding: 20px 20px 20% 20px;}
 }
 
 @media(min-width:376px) and (max-width:600px) {
@@ -925,7 +936,7 @@ tbody>tr>td {
         font-size: 2em;
     }
     #menu-toggle {
-        font-size: 2em;
+        font-size: 3em;
     }
     .mainmenu li a,
     .mainmenu li a:hover {
@@ -995,22 +1006,22 @@ tbody>tr>td {
     }
 
     .mainmenulanguages li a,.mainmenulanguages li a:hover{background-size: 38px;font-size: 1.3em}
-    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }  
-    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }  
+    .mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }
+    .mainmenulanguages li:nth-child(2) a{background-position: 98% -48px; }
     .mainmenulanguages li:nth-child(3) a{background-position: 98% -103px; }
 
     .mainmenuplus li a,.mainmenuplus li a:hover{background-size: 50px;font-size: 1em}
-    .mainmenuplus li:nth-child(1) a{background-position: 98% 15px; }  
-    .mainmenuplus li:nth-child(2) a{background-position: 98% -48px; }  
-    .mainmenuplus li:nth-child(3) a{background-position: 98% -107px; }  
+    .mainmenuplus li:nth-child(1) a{background-position: 98% 15px; }
+    .mainmenuplus li:nth-child(2) a{background-position: 98% -48px; }
+    .mainmenuplus li:nth-child(3) a{background-position: 98% -107px; }
     .mainmenuplus li:nth-child(4) a{background-position: 98% -167px; }
 
     .cajaBlanca h1{font-size: 34px;}
     .cajaBlanca h2{font-size: 29px;}
     .cajaBlanca h3{font-size: 22px;}
     .cajaBlanca p{font-size: 15px;}
-    .cajaBlanca p>a{font-size: 15px;}         
-    .cajaBlanca{background: #fff; padding: 20px 20px 20% 20px;} 
+    .cajaBlanca p>a{font-size: 15px;}
+    .cajaBlanca{background: #fff; padding: 20px 20px 20% 20px;}
 }
 
 
@@ -1113,9 +1124,9 @@ tbody>tr>td {
 
 .mainmenulanguages li a:hover{color:#ffffff; background-size: 50px; background-color: #e30413}
 
-.mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }  
-.mainmenulanguages li:nth-child(2) a{background-position: 98% -68px; }  
-.mainmenulanguages li:nth-child(3) a{background-position: 98% -137px; }  
+.mainmenulanguages li:nth-child(1) a{background-position: 98% 13px; }
+.mainmenulanguages li:nth-child(2) a{background-position: 98% -68px; }
+.mainmenulanguages li:nth-child(3) a{background-position: 98% -137px; }
 
 /*Menu plus*/
 .mainmenuplus{padding: 0;padding: 0;list-style: none;}
@@ -1129,10 +1140,10 @@ tbody>tr>td {
 
 .mainmenuplus li a:hover{color: #c1151d; background: url(../img/menuplus-hover.svg) no-repeat;background-size: 60px;}
 
-.mainmenuplus li:nth-child(1) a{background-position: 98% 15px; }  
-.mainmenuplus li:nth-child(2) a{background-position: 98% -90px; }  
-.mainmenuplus li:nth-child(3) a{background-position: 98% -190px; }  
-.mainmenuplus li:nth-child(4) a{background-position: 98% -300px; }  
+.mainmenuplus li:nth-child(1) a{background-position: 98% 15px; }
+.mainmenuplus li:nth-child(2) a{background-position: 98% -90px; }
+.mainmenuplus li:nth-child(3) a{background-position: 98% -190px; }
+.mainmenuplus li:nth-child(4) a{background-position: 98% -300px; }
 
 .controlBig{
     height: 60px;
@@ -1141,12 +1152,12 @@ tbody>tr>td {
 .cargando {
 
     width: 100%;height: 100%;
-    overflow: hidden; 
+    overflow: hidden;
     top: 0px;
     left: 0px;
     z-index: 10000;
     text-align: center;
-    position:absolute; 
+    position:absolute;
     background-color: #FFFFFF;
     opacity:0.6;
     filter:alpha(opacity=40);
@@ -1178,5 +1189,3 @@ tbody>tr>td {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
 }
-
-

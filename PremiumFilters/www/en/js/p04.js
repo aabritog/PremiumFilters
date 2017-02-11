@@ -9,6 +9,49 @@ $(document).ready(function () {
     //var webMethodGetSr_Referencias = "http://a21287345-001-site1.etempurl.com/WCFPremiumFilters.asmx/GetSr_Referencias";
 
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
+    $(document).keydown(function(e) {
+      try{
+        if (e.which == 13) {
+            $("#bloquea").show();
+            $("#fondoBlanco").show();
+
+            var idPF_Ref = document.getElementById("inpBuscar").value;
+            var parametrosGetSr_Referencias = "{'PF_Ref':'" + idPF_Ref + "'}";
+            //console.log(idPF_Ref);
+            //console.log(parametrosGetSr_Referencias);
+            if (idPF_Ref == "") {
+                $("#bloquea").hide();
+                $("#fondoBlanco").hide();
+                navigator.notification.alert(
+                    msjValidaciones("e", 1), // message
+                    alertDismissed, // callback
+                    'Information', // title
+                    'OK' // buttonName
+                );
+
+            } else {
+
+                //Objeto AJAX para la grilla de los Filtros de Aire.
+                $.ajax({
+                    type: "POST",
+                    url: webMethodGetSr_Referencias,
+                    data: parametrosGetSr_Referencias,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: llenarSr_Referencias,
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus + ": " + XMLHttpRequest.responseText);
+                    }
+                });
+            }
+
+            e.preventDefault();
+        }
+      }catch(e){
+        console.log('error: '+ e.message);
+      }
+    });
+
     $("#btnBuscar").click(function () {
 
         $("#bloquea").show();
