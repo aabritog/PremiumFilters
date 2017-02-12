@@ -168,7 +168,7 @@ $(document).ready(function () {
             }
         });
 
-        //Objeto AJAX para la grilla de los Filtros de Aire Acondicionado.        
+        //Objeto AJAX para la grilla de los Filtros de Aire Acondicionado.
         $.ajax({
             type: "POST",
             url: webMethodGetAC,
@@ -287,6 +287,7 @@ function llenarModelo(result) {
 //Función que se encarga de llenar el combo "Motor/Capacidad - Cilindraje" con la información obtenida del objeto AJAX.
 function llenarCilindraje(result) {
 
+    if (IsJsonString(result.d)) {
     var objJsonCilindraje = JSON.parse(result.d);
     var HtmlCilindraje;
     HtmlCilindraje = "<option value='#'>Select...</option>";
@@ -306,6 +307,16 @@ function llenarCilindraje(result) {
     $("#select4").html(HtmlCilindraje);
     $("#bloquea").hide();
     $("#fondoBlanco").hide();
+    else{
+      navigator.notification.alert(
+          'No search results', // message
+          alertDismissed, // callback
+          'Information', // title
+          'OK'
+      );
+      $("#bloquea").hide();
+      $("#fondoBlanco").hide();
+    }
 }
 
 
