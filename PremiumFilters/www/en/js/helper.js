@@ -1,4 +1,4 @@
-var domainWS="http://a212873452-001-site1.itempurl.com/WCFPremiumFilters.asmx/";
+var domainWS="http://operatecnologias-001-site1.dtempurl.com/WCFPremiumFilters.asmx/";
 var consulta;
 var consultaValidar = "";
 var consultaExistencia = "";
@@ -27,7 +27,7 @@ function linkWS(method){
     var linkWS="";
 
     try{
-        linkWS=domainWS.toString()+method.toString(); 
+        linkWS=domainWS.toString()+method.toString();
         //console.log(linkWS);
     }catch(e){
         console.log(e.toString());
