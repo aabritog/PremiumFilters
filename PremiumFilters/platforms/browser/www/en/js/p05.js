@@ -3,7 +3,7 @@
 //------------------------------------------------------------------------------
 $(document).ready(function() {
 
-
+var webMethodGetSt_CompetidoresRef = linkWS("GetSt_CompetidoresRef");
 
     //Evento jQuery que se encarga de llamar los objetos AJAX que van a obtener la información de cada una de las grillas de resultados.
     $(document).keydown(function(e) {
@@ -54,7 +54,6 @@ $(document).ready(function() {
         $("#bloquea").show();
         $("#fondoBlanco").show();
         //Variables que contiene la ruta de los Web  Services a llamar.
-        var webMethodGetSt_CompetidoresRef = linkWS("GetSt_CompetidoresRef");
 
         var idOtraRef = document.getElementById("inpBuscar").value
         var parametrosGetSt_CompetidoresRef = "{'OtraRef':'" + idOtraRef + "'}";

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApU5sSggz4U6MC95dE+NLeAAAAAACAAAAAAAQZgAAAAEAACAAAAAfeyFhN8i2hfWGGzSU+EQ16W7oDClvbjo0wyNcDjKshwAAAAAOgAAAAAIAACAAAAB6lwUC8zDJqT8/O03j9bMt31ekZIv3ZUvxR9f2AA0q6iAAAACvMtKXmhx1uQzpqn6cxa7w6c8NvaZLmNmEt/sVnLGooUAAAAA09lr3Rh8yH3cCjTF4D6Rkxvr5/jtjb19Xhx5i9BmboeOiqOQFpyumtwTK0qXc/pCo9oHjxGzg6AuiMFZXEGwl</EncryptedPassword>
+    <_PublishTargetUrl>ftp://home443969309.1and1-data.host</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/WCFPremiumFilters.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>09/24/2016 16:45:49</publishTime>
+    </File>
+    <File Include="WCFPremiumFilters.asmx">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

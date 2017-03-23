@@ -307,7 +307,7 @@ function llenarCilindraje(result) {
     $("#select4").html(HtmlCilindraje);
     $("#bloquea").hide();
     $("#fondoBlanco").hide();
-    else{
+  }else{
       navigator.notification.alert(
           'No search results', // message
           alertDismissed, // callback
